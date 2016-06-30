@@ -39,6 +39,10 @@
             this.btnCerrar = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlArriba = new System.Windows.Forms.Panel();
+            this.txtCodInternoMesero = new System.Windows.Forms.TextBox();
+            this.lblNomMesero = new System.Windows.Forms.Label();
+            this.lblMesa = new System.Windows.Forms.Label();
+            this.txtNomBoton = new System.Windows.Forms.TextBox();
             this.btnAnularVenta = new System.Windows.Forms.Button();
             this.btnDescuento = new System.Windows.Forms.Button();
             this.btnSacar = new System.Windows.Forms.Button();
@@ -47,6 +51,9 @@
             this.txtProducto = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBuscarMesero = new System.Windows.Forms.Button();
+            this.lblCedulaMesero = new System.Windows.Forms.Label();
+            this.txtCedulaMesero = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtDescPuntos = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -143,6 +150,10 @@
             // pnlArriba
             // 
             this.pnlArriba.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlArriba.Controls.Add(this.txtCodInternoMesero);
+            this.pnlArriba.Controls.Add(this.lblNomMesero);
+            this.pnlArriba.Controls.Add(this.lblMesa);
+            this.pnlArriba.Controls.Add(this.txtNomBoton);
             this.pnlArriba.Controls.Add(this.btnAnularVenta);
             this.pnlArriba.Controls.Add(this.btnDescuento);
             this.pnlArriba.Controls.Add(this.btnSacar);
@@ -154,6 +165,52 @@
             this.pnlArriba.Name = "pnlArriba";
             this.pnlArriba.Size = new System.Drawing.Size(845, 52);
             this.pnlArriba.TabIndex = 6;
+            // 
+            // txtCodInternoMesero
+            // 
+            this.txtCodInternoMesero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCodInternoMesero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCodInternoMesero.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodInternoMesero.ForeColor = System.Drawing.Color.Gray;
+            this.txtCodInternoMesero.Location = new System.Drawing.Point(223, 27);
+            this.txtCodInternoMesero.Name = "txtCodInternoMesero";
+            this.txtCodInternoMesero.Size = new System.Drawing.Size(48, 20);
+            this.txtCodInternoMesero.TabIndex = 91;
+            this.txtCodInternoMesero.Visible = false;
+            // 
+            // lblNomMesero
+            // 
+            this.lblNomMesero.AutoSize = true;
+            this.lblNomMesero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNomMesero.Location = new System.Drawing.Point(257, 32);
+            this.lblNomMesero.Name = "lblNomMesero";
+            this.lblNomMesero.Size = new System.Drawing.Size(61, 15);
+            this.lblNomMesero.TabIndex = 90;
+            this.lblNomMesero.Text = "ATIENDE:";
+            this.lblNomMesero.Visible = false;
+            // 
+            // lblMesa
+            // 
+            this.lblMesa.AutoSize = true;
+            this.lblMesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMesa.Location = new System.Drawing.Point(323, 11);
+            this.lblMesa.Name = "lblMesa";
+            this.lblMesa.Size = new System.Drawing.Size(44, 15);
+            this.lblMesa.TabIndex = 88;
+            this.lblMesa.Text = "MESA:";
+            this.lblMesa.Visible = false;
+            // 
+            // txtNomBoton
+            // 
+            this.txtNomBoton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNomBoton.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNomBoton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomBoton.ForeColor = System.Drawing.Color.Gray;
+            this.txtNomBoton.Location = new System.Drawing.Point(223, 3);
+            this.txtNomBoton.Name = "txtNomBoton";
+            this.txtNomBoton.Size = new System.Drawing.Size(48, 20);
+            this.txtNomBoton.TabIndex = 89;
+            this.txtNomBoton.Visible = false;
             // 
             // btnAnularVenta
             // 
@@ -259,6 +316,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
+            this.panel1.Controls.Add(this.btnBuscarMesero);
+            this.panel1.Controls.Add(this.lblCedulaMesero);
+            this.panel1.Controls.Add(this.txtCedulaMesero);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.txtDescPuntos);
             this.panel1.Controls.Add(this.label2);
@@ -280,6 +340,47 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(845, 163);
             this.panel1.TabIndex = 7;
+            // 
+            // btnBuscarMesero
+            // 
+            this.btnBuscarMesero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuscarMesero.BackColor = System.Drawing.SystemColors.Window;
+            this.btnBuscarMesero.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscarMesero.FlatAppearance.BorderSize = 0;
+            this.btnBuscarMesero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarMesero.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarMesero.Image")));
+            this.btnBuscarMesero.Location = new System.Drawing.Point(748, 6);
+            this.btnBuscarMesero.Name = "btnBuscarMesero";
+            this.btnBuscarMesero.Size = new System.Drawing.Size(33, 31);
+            this.btnBuscarMesero.TabIndex = 90;
+            this.btnBuscarMesero.UseVisualStyleBackColor = false;
+            this.btnBuscarMesero.Visible = false;
+            this.btnBuscarMesero.Click += new System.EventHandler(this.btnBuscarMesero_Click);
+            // 
+            // lblCedulaMesero
+            // 
+            this.lblCedulaMesero.AutoSize = true;
+            this.lblCedulaMesero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCedulaMesero.Location = new System.Drawing.Point(455, 22);
+            this.lblCedulaMesero.Name = "lblCedulaMesero";
+            this.lblCedulaMesero.Size = new System.Drawing.Size(52, 15);
+            this.lblCedulaMesero.TabIndex = 89;
+            this.lblCedulaMesero.Text = "Mesero:";
+            // 
+            // txtCedulaMesero
+            // 
+            this.txtCedulaMesero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCedulaMesero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCedulaMesero.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCedulaMesero.ForeColor = System.Drawing.Color.Gray;
+            this.txtCedulaMesero.Location = new System.Drawing.Point(539, 16);
+            this.txtCedulaMesero.Name = "txtCedulaMesero";
+            this.txtCedulaMesero.Size = new System.Drawing.Size(195, 21);
+            this.txtCedulaMesero.TabIndex = 88;
+            this.txtCedulaMesero.Text = "Buscar Mesero";
+            this.txtCedulaMesero.Enter += new System.EventHandler(this.txtCodigoMesero_Enter);
+            this.txtCedulaMesero.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCodigoMesero_KeyUp);
+            this.txtCedulaMesero.Leave += new System.EventHandler(this.txtCodigoMesero_Leave);
             // 
             // label7
             // 
@@ -714,5 +815,12 @@
         private System.Windows.Forms.TextBox txtPuntos;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtDescPuntos;
+        private System.Windows.Forms.Label lblMesa;
+        private System.Windows.Forms.TextBox txtNomBoton;
+        private System.Windows.Forms.Label lblNomMesero;
+        private System.Windows.Forms.Label lblCedulaMesero;
+        private System.Windows.Forms.TextBox txtCedulaMesero;
+        private System.Windows.Forms.TextBox txtCodInternoMesero;
+        private System.Windows.Forms.Button btnBuscarMesero;
     }
 }

@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(INICIO));
             this.pnlIzquierda = new System.Windows.Forms.Panel();
+            this.btnMesas = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnMeseros = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnInventario = new System.Windows.Forms.Button();
@@ -44,6 +47,8 @@
             this.btnReporteVentas = new System.Windows.Forms.Button();
             this.btnReporteGananciasYperdidas = new System.Windows.Forms.Button();
             this.pnlParametros = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.btnCierreCaja = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
             this.btnCaja = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -79,8 +84,7 @@
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.pnlCentral = new System.Windows.Forms.Panel();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.btnCierreCaja = new System.Windows.Forms.Button();
+            this.btnVentasMesas = new System.Windows.Forms.Button();
             this.pnlIzquierda.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -101,6 +105,10 @@
             this.pnlIzquierda.AutoScroll = true;
             this.pnlIzquierda.BackColor = System.Drawing.Color.SeaGreen;
             this.pnlIzquierda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlIzquierda.Controls.Add(this.btnVentasMesas);
+            this.pnlIzquierda.Controls.Add(this.btnMesas);
+            this.pnlIzquierda.Controls.Add(this.button2);
+            this.pnlIzquierda.Controls.Add(this.btnMeseros);
             this.pnlIzquierda.Controls.Add(this.panel10);
             this.pnlIzquierda.Controls.Add(this.btnInventario);
             this.pnlIzquierda.Controls.Add(this.btnCompania);
@@ -120,6 +128,57 @@
             this.pnlIzquierda.Name = "pnlIzquierda";
             this.pnlIzquierda.Size = new System.Drawing.Size(209, 657);
             this.pnlIzquierda.TabIndex = 0;
+            // 
+            // btnMesas
+            // 
+            this.btnMesas.FlatAppearance.BorderSize = 0;
+            this.btnMesas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnMesas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMesas.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMesas.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnMesas.Image = ((System.Drawing.Image)(resources.GetObject("btnMesas.Image")));
+            this.btnMesas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMesas.Location = new System.Drawing.Point(1, 1134);
+            this.btnMesas.Name = "btnMesas";
+            this.btnMesas.Size = new System.Drawing.Size(184, 40);
+            this.btnMesas.TabIndex = 20;
+            this.btnMesas.Text = "Mesas";
+            this.btnMesas.UseVisualStyleBackColor = true;
+            this.btnMesas.Click += new System.EventHandler(this.btnMesas_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.DimGray;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(0, 1092);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(189, 40);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "JJRICO";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // btnMeseros
+            // 
+            this.btnMeseros.FlatAppearance.BorderSize = 0;
+            this.btnMeseros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnMeseros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMeseros.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMeseros.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnMeseros.Image = ((System.Drawing.Image)(resources.GetObject("btnMeseros.Image")));
+            this.btnMeseros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMeseros.Location = new System.Drawing.Point(0, 1182);
+            this.btnMeseros.Name = "btnMeseros";
+            this.btnMeseros.Size = new System.Drawing.Size(184, 40);
+            this.btnMeseros.TabIndex = 18;
+            this.btnMeseros.Text = "Meseros";
+            this.btnMeseros.UseVisualStyleBackColor = true;
+            this.btnMeseros.Click += new System.EventHandler(this.btnMeseros_Click);
             // 
             // panel10
             // 
@@ -310,6 +369,30 @@
             this.pnlParametros.Name = "pnlParametros";
             this.pnlParametros.Size = new System.Drawing.Size(170, 313);
             this.pnlParametros.TabIndex = 13;
+            // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.SystemColors.Window;
+            this.panel13.Location = new System.Drawing.Point(3, 276);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(10, 33);
+            this.panel13.TabIndex = 25;
+            // 
+            // btnCierreCaja
+            // 
+            this.btnCierreCaja.FlatAppearance.BorderSize = 0;
+            this.btnCierreCaja.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnCierreCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCierreCaja.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCierreCaja.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnCierreCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCierreCaja.Location = new System.Drawing.Point(17, 276);
+            this.btnCierreCaja.Name = "btnCierreCaja";
+            this.btnCierreCaja.Size = new System.Drawing.Size(149, 33);
+            this.btnCierreCaja.TabIndex = 24;
+            this.btnCierreCaja.Text = "Cierre Caja";
+            this.btnCierreCaja.UseVisualStyleBackColor = true;
+            this.btnCierreCaja.Click += new System.EventHandler(this.btnCierreCaja_Click);
             // 
             // panel12
             // 
@@ -797,29 +880,22 @@
             this.pnlCentral.Size = new System.Drawing.Size(833, 657);
             this.pnlCentral.TabIndex = 2;
             // 
-            // panel13
+            // btnVentasMesas
             // 
-            this.panel13.BackColor = System.Drawing.SystemColors.Window;
-            this.panel13.Location = new System.Drawing.Point(3, 276);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(10, 33);
-            this.panel13.TabIndex = 25;
-            // 
-            // btnCierreCaja
-            // 
-            this.btnCierreCaja.FlatAppearance.BorderSize = 0;
-            this.btnCierreCaja.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnCierreCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCierreCaja.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCierreCaja.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnCierreCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCierreCaja.Location = new System.Drawing.Point(17, 276);
-            this.btnCierreCaja.Name = "btnCierreCaja";
-            this.btnCierreCaja.Size = new System.Drawing.Size(149, 33);
-            this.btnCierreCaja.TabIndex = 24;
-            this.btnCierreCaja.Text = "Cierre Caja";
-            this.btnCierreCaja.UseVisualStyleBackColor = true;
-            this.btnCierreCaja.Click += new System.EventHandler(this.btnCierreCaja_Click);
+            this.btnVentasMesas.FlatAppearance.BorderSize = 0;
+            this.btnVentasMesas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnVentasMesas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVentasMesas.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVentasMesas.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnVentasMesas.Image = ((System.Drawing.Image)(resources.GetObject("btnVentasMesas.Image")));
+            this.btnVentasMesas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVentasMesas.Location = new System.Drawing.Point(0, 1230);
+            this.btnVentasMesas.Name = "btnVentasMesas";
+            this.btnVentasMesas.Size = new System.Drawing.Size(184, 40);
+            this.btnVentasMesas.TabIndex = 21;
+            this.btnVentasMesas.Text = "Ventas Mesas";
+            this.btnVentasMesas.UseVisualStyleBackColor = true;
+            this.btnVentasMesas.Click += new System.EventHandler(this.btnVentasMesas_Click);
             // 
             // INICIO
             // 
@@ -908,5 +984,9 @@
         public System.Windows.Forms.Button btnCaja;
         private System.Windows.Forms.Panel panel13;
         public System.Windows.Forms.Button btnCierreCaja;
+        private System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button btnMeseros;
+        public System.Windows.Forms.Button btnMesas;
+        public System.Windows.Forms.Button btnVentasMesas;
     }
 }

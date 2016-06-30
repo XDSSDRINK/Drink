@@ -190,7 +190,7 @@ namespace SBX.CONTROLLER
 
         public DataTable CargarUltimoConsecutivo()
         {
-            Query = "SELECT ISNULL(MAX(ConsecutivoDocumento),0) UltimoConsecutivo FROM Venta ";
+            Query = "SELECT ISNULL(MAX(CAST(ConsecutivoDocumento AS decimal(18))),0) UltimoConsecutivo FROM Venta ";
             DT = datos.Consultar(Query);
             return DT;
         }

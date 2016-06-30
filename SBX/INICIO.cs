@@ -30,6 +30,13 @@ namespace SBX
         CONTROLLER.Caja cj = new CONTROLLER.Caja();
         CIERRE_BILLETES Cbi = new CIERRE_BILLETES();
 
+
+        /*JJRICO*/
+        MESAS frmMesas = new MESAS();
+        MESEROS frmMeseros = new MESEROS();
+        VENTAS_MESAS frmVentasMesas = new VENTAS_MESAS();
+        
+
         CONTROLLER.Usuario usuario = new CONTROLLER.Usuario();
 
         DataTable DT;
@@ -409,6 +416,28 @@ namespace SBX
                 msgError.lblMensaje.Text = "No se ha realizado apertura de caja";
                 msgError.ShowDialog();
             }
+        }
+
+        private void btnMeseros_Click(object sender, EventArgs e)
+        {
+            pnlCentral.BackgroundImage = null;
+            AbrirFormularioEnPanel(frmMeseros);
+            lblFormulario.Text = btnMeseros.Text;
+        }
+
+        private void btnMesas_Click(object sender, EventArgs e)
+        {
+            pnlCentral.BackgroundImage = null;
+            AbrirFormularioEnPanel(frmMesas);
+            lblFormulario.Text = btnMeseros.Text;
+        }
+
+        private void btnVentasMesas_Click(object sender, EventArgs e)
+        {
+            pnlCentral.BackgroundImage = null;
+            frmVentasMesas.Usuario = lblNombreUsuario.Text;
+            AbrirFormularioEnPanel(frmVentasMesas);
+            lblFormulario.Text = btnVentasMesas.Text;
         }
     }
 }

@@ -20,6 +20,7 @@ namespace SBX
 
         CONTROLLER.Ventas ventas = new CONTROLLER.Ventas();
         AYUDA aYUDA = new AYUDA();
+        CONTROLLER.General general = new CONTROLLER.General();
         AUTORIZACION aUTORIZACION = new AUTORIZACION();
         MENSAJE_CONFIRMACION mCONFIRMACION = new MENSAJE_CONFIRMACION();
         CONTROLLER.VentaAnulada VentAnu = new CONTROLLER.VentaAnulada();
@@ -37,6 +38,7 @@ namespace SBX
         CONTROLLER.kardex kardx = new CONTROLLER.kardex();
 
         public string Usuario { get; set; }
+        public bool registroProductos = false;
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -49,6 +51,7 @@ namespace SBX
         bool OK = true;
         string item = "";
         int Usuariosreg = 0;
+        CONTROLLER.Mesero oMesero = new CONTROLLER.Mesero();
 
         //// Create a new form.
         Form mdiChildForm = new Form();
@@ -66,6 +69,40 @@ namespace SBX
 
             // Call the method that changes the background color.
             SetBackGroundColorOfMDIForm();
+
+            lblMesa.Visible = false;
+            lblNomMesero.Visible = false;
+            txtNomBoton.Visible = false;
+            lblCedulaMesero.Visible = false;
+            txtCedulaMesero.Visible = false;
+            txtCodInternoMesero.Visible = false;
+            lblNomMesero.Visible = false;
+            btnBuscarMesero.Visible = false;
+        }
+
+        public REGISTRO_VENTASS(String nomMesa, String nomBoton)
+        {
+            InitializeComponent();
+
+            // Set the IsMdiContainer property to true.
+            IsMdiContainer = true;
+
+            // Set the child form's MdiParent property to 
+            // the current form.
+            mdiChildForm.MdiParent = this;
+
+            // Call the method that changes the background color.
+            SetBackGroundColorOfMDIForm();
+            
+            txtNomBoton.Text = nomBoton;
+            lblMesa.Text = "MESA: " + nomMesa;
+
+            lblMesa.Visible = true;
+            lblNomMesero.Visible = true;
+            lblCedulaMesero.Visible = true;
+            txtCedulaMesero.Visible = true;
+            lblNomMesero.Visible = true;
+            btnBuscarMesero.Visible = true;
         }
 
         private void SetBackGroundColorOfMDIForm()
@@ -85,11 +122,27 @@ namespace SBX
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            Limpiar();
-            this.Close();
+            //Cuando es visible es por que es una compra de una mesa
+            if (lblMesa.Visible)
+            {
+                if (dtgRegistroVentas.Rows.Count > 0)
+                {
+                    registroProductos = true;
+                }
+                else
+                {
+                    registroProductos = false;
+                }
+                this.Hide();
+            }
+            else
+            {
+                Limpiar();
+                this.Close();
+            }
         }
 
-        private void Limpiar()
+        private void Limpiar(String bandera = "0")
         {
             txtProducto.Text = "";
             dtgRegistroVentas.Rows.Clear();
@@ -102,6 +155,41 @@ namespace SBX
             txtCantidad.Text = "";
             btnCerrar.Enabled = true;
             txtPuntos.Text = "";
+            btnGuardar.Enabled = true;
+
+            if (!bandera.Equals("0"))
+            {
+                lblMesa.Visible = true;
+                txtNomBoton.Visible = false;
+                lblNomMesero.Visible = true;
+                btnBuscarMesero.Visible = true;
+                lblCedulaMesero.Visible = true;
+                txtCedulaMesero.Visible = true;
+                txtCodInternoMesero.Visible = false;
+
+                //txtNomBoton.Text = "";
+                txtCodInternoMesero.Text = "";
+                //lblMesa.Text = "MESA:";
+                lblNomMesero.Text = "ATIENDE:";
+                txtCedulaMesero.Text = "Buscar Mesero";
+            }
+            else
+            {                
+                lblMesa.Visible = false;
+                txtNomBoton.Visible = false;
+                lblNomMesero.Visible = false;
+                btnBuscarMesero.Visible = false;
+                lblCedulaMesero.Visible = false;
+                txtCedulaMesero.Visible = false;
+                txtCodInternoMesero.Visible = false;
+
+                txtNomBoton.Text = "";
+                txtCodInternoMesero.Text = "";
+                lblMesa.Text = "MESA:";
+                lblNomMesero.Text = "ATIENDE:";
+                txtCedulaMesero.Text = "Buscar Mesero";
+            }        
+
         }
 
         private void pnlTitulo_MouseDown(object sender, MouseEventArgs e)
@@ -119,14 +207,14 @@ namespace SBX
         private void CargaProductoVenta()
         {
             errorProvider1.Clear();
-           
+
             double ValorUnidad = 0;
             double NuevaCantidad = 0;
             Filas = 0;
             bool NuevoProducto = true;
 
             if (txtProducto.Text.Trim() != "")
-            { 
+            {
                 ventas.buscar = txtProducto.Text;
 
                 DT = ventas.producto_venta();
@@ -278,13 +366,23 @@ namespace SBX
                     else
                     {
                         errorProvider1.SetError(txtProducto, "Producto no disponible");
-                    } 
+                    }
                 }
             }
 
             if (dtgRegistroVentas.Rows.Count > 0)
             {
-                btnCerrar.Enabled = false;
+                //Cuando es visible es por que es una compra de una mesa
+                if (lblMesa.Visible)
+                {
+                    btnCerrar.Enabled = true;
+                }
+                else
+                {
+                    btnCerrar.Enabled = false;
+                }
+
+
             }
             else
             {
@@ -365,7 +463,7 @@ namespace SBX
                     if (lista == items.Cells["ClItem"].Value.ToString())
                     {
                         dtgRegistroVentas.Rows.Remove(items);
-                    } 
+                    }
                 }
             }
         }
@@ -516,7 +614,7 @@ namespace SBX
                 txtTotal.Text = PrecioTotal.ToString("N2");
                 txtPuntos.Text = TPuntos.ToString();
             }
-            
+
         }
 
         private void txtCliente_Enter(object sender, EventArgs e)
@@ -586,7 +684,7 @@ namespace SBX
                 DT = client.CargarActivos(Cliente);
                 DataRow rows = DT.Rows[0];
                 lblNombreCliente.Text = rows["RazonSocial"].ToString() + " " + rows["NombreComercial"].ToString();
-            }         
+            }
         }
 
         private void txtCliente_KeyUp(object sender, KeyEventArgs e)
@@ -668,8 +766,9 @@ namespace SBX
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
-        {
+        {            
             DataRow rowsGlobal;
+            Boolean continua = true;
             double NuevoConsecutivo = 0;
 
             ValidacionCantidad();
@@ -678,102 +777,157 @@ namespace SBX
 
             if (dtgRegistroVentas.Rows.Count > 0)
             {
-                //Usuario
-                DT = usu.Cargar(true);
-                foreach (DataRow rows in DT.Rows)
+                //Cuando es visible es por que es una compra de una mesa
+                if (lblMesa.Visible)
                 {
-                    if (rows["Usuario"].ToString() == Usuario)
+                    //Valido que deba asignarle un codigo de mesero a la mesa
+                    if (txtCodInternoMesero.Text == "" || txtCodInternoMesero.Text.Trim().Equals(""))
                     {
-                        Usuariosreg = Convert.ToInt32(rows["CodigoUsuario"]);
-                        ventas.CodigoUsuario = Convert.ToInt32(rows["CodigoUsuario"]);
+                        msgError.lblMensaje.Text = "Debe asignar a alguien que atienda la mesa.";
+                        msgError.ShowDialog();
+                        txtCedulaMesero.Focus();
+                        continua = false;
+                    }
+                    else
+                    {
+                        mCONFIRMACION.txtMensaje.Text = "Seguro que desea totalizar esta venta?";
+                        mCONFIRMACION.Modulo = "Confirmacion";
+                        mCONFIRMACION.ShowDialog();
+                        if (mCONFIRMACION.Ok)
+                        {
+                            continua = true;
+                        }
+                        else
+                        {
+                            continua = false;
+                        }
                     }
                 }
-                //Cliente
-                if (txtCliente.Text.Trim() != "" && txtCliente.Text != "Cliente")
+
+                if (continua)
                 {
-                   DT = client.CargarActivos(txtCliente.Text);
+                    //Usuario
+                    DT = usu.Cargar(true);
                     foreach (DataRow rows in DT.Rows)
                     {
-                        ventas.CodigoCliente = Convert.ToInt32(rows["Codigo"]);
-                    }
-                }
-                else
-                {
-                    ventas.CodigoCliente = 3;
-                }
-                            
-                foreach (DataGridViewRow rows in dtgRegistroVentas.Rows)
-                {
-                    //Producto
-                    DT = prod.CargarProducto("pd.Item", rows.Cells["ClItem"].Value.ToString(), "Unico");
-                    rowsGlobal = DT.Rows[0];
-                    ventas.CodigoProducto = Convert.ToInt32(rowsGlobal["CodigoProducto"]);
-                    ventas.CodigoBarras = rows.Cells["ClCodigoBarras"].Value.ToString();
-                    ventas.IVA = Convert.ToDouble(rows.Cells["ClIva"].Value);
-                    ventas.Puntos = Convert.ToDouble(txtPuntos.Text);
-                    //Factura
-                    ventas.Documento = "Factura";
-                    DT = fact.CargarFacura();
-                    foreach (DataRow fac in DT.Rows)
-                    {
-                        //Verificacion en ventas
-                       DT = ventas.CargarUltimoConsecutivo();
-                        foreach (DataRow ventasrow in DT.Rows)
+                        if (rows["Usuario"].ToString() == Usuario)
                         {
-                            if (ventasrow["UltimoConsecutivo"].ToString() != "0")
-                            {
-                                NuevoConsecutivo = Convert.ToDouble(ventasrow["UltimoConsecutivo"]) + 1;
-                                ventas.ConsecutivoDocumento = NuevoConsecutivo.ToString();
-                            }
-                            else
-                            {
-                                ventas.ConsecutivoDocumento = "1";
-                            }
+                            Usuariosreg = Convert.ToInt32(rows["CodigoUsuario"]);
+                            ventas.CodigoUsuario = Convert.ToInt32(rows["CodigoUsuario"]);
                         }
-                        ventas.NombreDocumento = fac["Nombre"].ToString();
+                    }
+                    //Cliente
+                    if (txtCliente.Text.Trim() != "" && txtCliente.Text != "Cliente")
+                    {
+                        DT = client.CargarActivos(txtCliente.Text);
+                        foreach (DataRow rows in DT.Rows)
+                        {
+                            ventas.CodigoCliente = Convert.ToInt32(rows["Codigo"]);
+                        }
+                    }
+                    else
+                    {
+                        ventas.CodigoCliente = 3;
                     }
 
-                    ventas.Cantidad = Convert.ToDouble(rows.Cells["ClCantidad"].Value);
-
-                    ventas.buscar = rows.Cells["ClItem"].Value.ToString();
-                    DT = ventas.producto_venta();
-                    foreach (DataRow DatosVenta in DT.Rows)
+                    foreach (DataGridViewRow rows in dtgRegistroVentas.Rows)
                     {
-                        ventas.Costo = Convert.ToDouble(DatosVenta["Costo"]);
-                        ventas.Margen = Convert.ToDouble(DatosVenta["Margen"]);
+                        //Producto
+                        DT = prod.CargarProducto("pd.Item", rows.Cells["ClItem"].Value.ToString(), "Unico");
+                        rowsGlobal = DT.Rows[0];
+                        ventas.CodigoProducto = Convert.ToInt32(rowsGlobal["CodigoProducto"]);
+                        ventas.CodigoBarras = rows.Cells["ClCodigoBarras"].Value.ToString();
+                        ventas.IVA = Convert.ToDouble(rows.Cells["ClIva"].Value);
+                        ventas.Puntos = Convert.ToDouble(txtPuntos.Text);
+                        //Factura
+                        ventas.Documento = "Factura";
+                        DT = fact.CargarFacura();
+                        foreach (DataRow fac in DT.Rows)
+                        {
+                            //Verificacion en ventas
+                            DT = ventas.CargarUltimoConsecutivo();
+                            foreach (DataRow ventasrow in DT.Rows)
+                            {
+                                if (ventasrow["UltimoConsecutivo"].ToString() != "0")
+                                {
+                                    NuevoConsecutivo = Convert.ToDouble(ventasrow["UltimoConsecutivo"]) + 1;
+                                    ventas.ConsecutivoDocumento = NuevoConsecutivo.ToString();
+                                }
+                                else
+                                {
+                                    ventas.ConsecutivoDocumento = "1";
+                                }
+                            }
+                            ventas.NombreDocumento = fac["Nombre"].ToString();
+                        }
+
+                        ventas.Cantidad = Convert.ToDouble(rows.Cells["ClCantidad"].Value);
+
+                        ventas.buscar = rows.Cells["ClItem"].Value.ToString();
+                        DT = ventas.producto_venta();
+                        foreach (DataRow DatosVenta in DT.Rows)
+                        {
+                            ventas.Costo = Convert.ToDouble(DatosVenta["Costo"]);
+                            ventas.Margen = Convert.ToDouble(DatosVenta["Margen"]);
+                        }
+
+                        ventas.Descuento = Convert.ToDouble(rows.Cells["ClDescuento"].Value);
+                        ventas.MedioPago = "Efectivo";
+                        ventas.Efectivo = Convert.ToDouble(txtRecibido.Text);
+
+                        OK = ventas.Registrar();
                     }
 
-                    ventas.Descuento = Convert.ToDouble(rows.Cells["ClDescuento"].Value);
-                    ventas.MedioPago = "Efectivo";
-                    ventas.Efectivo = Convert.ToDouble(txtRecibido.Text);
-
-                    OK = ventas.Registrar();
-                }
-    
-                if (OK)
-                {
-                    kardx.CodigoUsuario = Usuariosreg;
-                    kardx.Modulo = "Ventas";
-                    OK = kardx.Registrar();
-
-                    if (!OK)
+                    if (OK)
                     {
-                        msgError.lblMensaje.Text = "Error al intentar registrar en kardex";
+                        kardx.CodigoUsuario = Usuariosreg;
+                        kardx.Modulo = "Ventas";
+                        OK = kardx.Registrar();
+
+                        if (!OK)
+                        {
+                            msgError.lblMensaje.Text = "Error al intentar registrar en kardex";
+                            msgError.ShowDialog();
+                        }
+
+                        try
+                        {
+                            if (lblMesa.Visible)
+                            {
+                                CONTROLLER.MesaMesero oMesaMesero = new CONTROLLER.MesaMesero();
+                                oMesaMesero.nomBoton = txtNomBoton.Text;
+                                oMesaMesero.codigo = long.Parse(txtCodInternoMesero.Text);
+                                oMesaMesero.registrar();
+                            }                            
+                        }
+                        catch(Exception ex)
+                        {
+
+                        }
+
+                        msgCorrecto.lblMensaje.Text = "Venta registrada correctamente";
+                        msgCorrecto.ShowDialog();                       
+
+                        if (!lblMesa.Visible)
+                        {
+                            Limpiar();
+                            AgregarVenta();
+
+                        }
+                        else
+                        {
+                            Limpiar("1");
+                        }
+                    }
+                    else
+                    {
+                        msgError.lblMensaje.Text = "Error al intentar registrar venta";
                         msgError.ShowDialog();
                     }
-
-                    msgCorrecto.lblMensaje.Text = "Venta registrada correctamente";
-                    msgCorrecto.ShowDialog();
-                    Limpiar();
-                    AgregarVenta();
-                }
-                else
-                {
-                    msgError.lblMensaje.Text = "Error al intentar registrar venta";
-                    msgError.ShowDialog();
                 }
             }
-        }     
+
+        }
 
         private void txtRecibido_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -844,6 +998,63 @@ namespace SBX
                     CalculoValores();
                 }
             }
+        }
+
+        private void txtCodigoMesero_Leave(object sender, EventArgs e)
+        {
+            if (txtCedulaMesero.Text == "")
+            {
+                txtCedulaMesero.Text = "Buscar Mesero";
+                txtCedulaMesero.ForeColor = Color.Gray;
+            }
+        }
+        
+        private void txtCodigoMesero_Enter(object sender, EventArgs e)
+        {
+            if (txtCedulaMesero.Text == "Buscar Mesero")
+            {
+                txtCedulaMesero.Text = "";
+                txtCedulaMesero.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtCodigoMesero_KeyUp(object sender, KeyEventArgs e)
+        {
+            //buscarMesero();
+        }
+
+        private void buscarMesero()
+        {
+            if (general.IsNumericDouble(txtCedulaMesero.Text) == true)
+            {
+                DataTable dtDatos = new DataTable();
+                dtDatos = oMesero.BuscarUnico(txtCedulaMesero.Text);
+
+                if (dtDatos.Rows.Count > 0)
+                {
+                    foreach (DataRow rows in dtDatos.Rows)
+                    {
+                        txtCodInternoMesero.Text = rows["Codigo"].ToString();
+                        txtCedulaMesero.Text = rows["DNI"].ToString();
+                        lblNomMesero.Text = "ATIENDE: " + rows["nombreapellido"].ToString();
+                        txtCedulaMesero.ForeColor = Color.Black;
+                    }
+                }
+                else
+                {
+                    msgError.lblMensaje.Text = "Mesero no existe";
+                    msgError.ShowDialog();
+                    txtCodInternoMesero.Text = "";
+                    txtCedulaMesero.Text = "Buscar Mesero";
+                    txtCedulaMesero.ForeColor = Color.Gray;
+                    lblNomMesero.Text = "ATIENDE:";
+                }
+            }
+        }
+
+        private void btnBuscarMesero_Click(object sender, EventArgs e)
+        {
+            buscarMesero();
         }
     }
 }
