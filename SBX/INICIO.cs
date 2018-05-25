@@ -22,7 +22,7 @@ namespace SBX
         ROLES_USUARIO _USUARIO = new ROLES_USUARIO();
         PERSONAL pERSONAL = new PERSONAL();
         CLIENTES cLIENTES = new CLIENTES();
-        INVENTARIO iNVENTARIO = new INVENTARIO();
+       
 
         CONTROLLER.Usuario usuario = new CONTROLLER.Usuario();
 
@@ -288,6 +288,7 @@ namespace SBX
 
         private void btnReporteInventario_Click_1(object sender, EventArgs e)
         {
+            INVENTARIO iNVENTARIO = new INVENTARIO();
             pnlCentral.BackgroundImage = null;
             AbrirFormularioEnPanel(iNVENTARIO);
             lblFormulario.Text = btnReporteInventario.Text;

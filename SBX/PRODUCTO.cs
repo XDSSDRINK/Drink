@@ -162,6 +162,7 @@ namespace SBX
                     byte[] imagen = (byte[])rows.Cells["ClFoto"].Value;
                     DTP.Foto = byteArrayToImage(imagen);
                     DTP.txtStockMaximo.Text = rows.Cells["clStockMaximo"].Value.ToString();
+                    DTP.txtAlertaFechaVenc.Text = rows.Cells["ClDiasAlertFechaV"].Value.ToString();
                 }
             }           
         }

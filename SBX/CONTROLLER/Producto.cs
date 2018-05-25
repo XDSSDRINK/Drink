@@ -322,7 +322,7 @@ namespace SBX.CONTROLLER
             Parametros[20] = new SqlParameter();
             Parametros[20].ParameterName = "@DiasAlertFechaV";
             Parametros[20].SqlDbType = SqlDbType.Int;
-            Parametros[20].SqlValue = StockMaximo;
+            Parametros[20].SqlValue = DiasFechaVence;
         }
         public Boolean Registrar()
         {

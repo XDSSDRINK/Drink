@@ -560,7 +560,7 @@
             this.txtAlertaFechaVenc.MaxLength = 5;
             this.txtAlertaFechaVenc.Name = "txtAlertaFechaVenc";
             this.txtAlertaFechaVenc.Size = new System.Drawing.Size(187, 21);
-            this.txtAlertaFechaVenc.TabIndex = 37;
+            this.txtAlertaFechaVenc.TabIndex = 7;
             this.txtAlertaFechaVenc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAlertaFechaVenc_KeyPress);
             // 
             // DETALLE_PRODUCTO

@@ -684,6 +684,8 @@ namespace SBX
                 cbxModoVenta.SelectedIndex = 0;
             }
             pbxFoto.Image = ((System.Drawing.Image)(resources.GetObject("pbxFoto.Image")));
+            txtStockMaximo.Text = "";
+            txtAlertaFechaVenc.Text = "";
         }
 
         public void DetalleProducto()

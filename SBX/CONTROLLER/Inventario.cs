@@ -29,7 +29,7 @@ namespace SBX.CONTROLLER
                     "SUM(CASE WHEN v.Cantidad IS NULL THEN  0 END) Cantidad_Vendida, "+
                     "(SUM(cp.Cantidad) - SUM((CASE WHEN v.Cantidad IS NULL THEN  0 END))) CANTIDAD_EXISTENTE, "+
                     "cp.FechaVencimiento,pro.Stock StockMinimo, pro.Descripcion,pro.IVA,M.Nombre Marca, Pre.Nombre Presentacion, "+
-                    "cat.Nombre Categoria, unm.Nombre UnidadMedida, pro.Medida,estd.Estado "+
+                    "cat.Nombre Categoria, unm.Nombre UnidadMedida, pro.Medida,estd.Estado,pro.DiasAlertFechaV,pro.AplicaFechaVencimiento,pro.StockMaximo " +
                     "FROM Kardex k "+
                     "INNER JOIN Compras cp ON k.IdCompra = cp.ID "+
                     "LEFT JOIN Venta v ON k.IdVenta = v.ID " +
@@ -42,7 +42,7 @@ namespace SBX.CONTROLLER
                      where +
                     " GROUP BY cp.CodigoProducto,v.CodigoProducto,pro.Item,pro.Nombre, " +
                     "cp.FechaVencimiento,pro.Stock,pro.Referencia,pro.Descripcion,pro.IVA,M.Nombre ,Pre.Nombre , " +
-                    "cat.Nombre ,unm.Nombre ,pro.Medida,estd.Estado  ORDER BY pro.Item ";
+                    "cat.Nombre ,unm.Nombre ,pro.Medida,estd.Estado,pro.DiasAlertFechaV,pro.AplicaFechaVencimiento,pro.StockMaximo  ORDER BY pro.Item ";
 
             DT = datos.Consultar(Query);
             return DT;

@@ -14,11 +14,11 @@ namespace SBX
     {
         CONTROLLER.Inventario inventario = new CONTROLLER.Inventario();
         CARGANDO cARGANDO = new CARGANDO();
-
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(INVENTARIO));
         DataTable DT;
         int Fila = 0;
         int Contador = 0;
-
+        bool currentlyAnimating = false;
         public INVENTARIO()
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace SBX
         {
             CargarInventario();
             EstiloTabla();
-            PintarTablaSegunAlerta();
+            this.dtgInventario.Paint += new PaintEventHandler(dtgAlertas_Paint);
         }
 
         private void EstiloTabla()
@@ -73,6 +73,10 @@ namespace SBX
                     dtgInventario.Rows[Contador].Cells["ClUnidadMedida"].Value = rows["UnidadMedida"];
                     dtgInventario.Rows[Contador].Cells["ClMedida"].Value = rows["Medida"];
                     dtgInventario.Rows[Contador].Cells["ClEstado"].Value = rows["Estado"];
+                    dtgInventario.Rows[Contador].Cells["ClDiasFechaV"].Value = rows["DiasAlertFechaV"];
+                    dtgInventario.Rows[Contador].Cells["ClAplicaFV"].Value = rows["AplicaFechaVencimiento"];
+                    dtgInventario.Rows[Contador].Cells["ClStockMax"].Value = rows["StockMaximo"];
+                    
                     Contador++;
                 }
             }
@@ -80,7 +84,7 @@ namespace SBX
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void txtBuscar_Enter(object sender, EventArgs e)
@@ -104,12 +108,6 @@ namespace SBX
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
             CargarInventario();
-        }
-
-        private void btnActualizar_Click(object sender, EventArgs e)
-        {
-            CargarInventario();
-            PintarTablaSegunAlerta();
         }
 
         private void ExportaExcel()
@@ -159,29 +157,121 @@ namespace SBX
             ExportaExcel();
         }
 
-        private void PintarTablaSegunAlerta()
+        //private void PintarTablaSegunAlerta()
+        //{
+        //    if (dtgInventario.Rows.Count > 0)
+        //    {
+        //        foreach (DataGridViewRow rows in dtgInventario.Rows)
+        //        {
+        //            //Alerta Stock
+        //            if (Convert.ToDecimal(rows.Cells["ClStockMinimo"].Value) == Convert.ToDecimal(rows.Cells["ClCantidadExistente"].Value) || Convert.ToDecimal(rows.Cells["ClStockMinimo"].Value) > Convert.ToDecimal(rows.Cells["ClCantidadExistente"].Value))
+        //            {
+        //                rows.DefaultCellStyle.BackColor = Color.Yellow;
+        //            }
+        //            //Alerta agotado
+        //            if (Convert.ToDecimal(rows.Cells["ClCantidadExistente"].Value) == 0)
+        //            {
+        //                rows.DefaultCellStyle.BackColor = Color.OrangeRed;
+        //            }
+        //            //Alerta proximo a vencer
+        //            DateTime FechaVencimiento = Convert.ToDateTime(rows.Cells["ClFechaVencimiento"].Value);
+        //            DateTime FechaActual = DateTime.Today;
+        //            TimeSpan TiempoFaltante = FechaVencimiento.Subtract(FechaActual);
+        //            if ((Convert.ToDouble(rows.Cells["ClDiasFechaV"].Value) >= TiempoFaltante.Days && TiempoFaltante.Days > 0) && Convert.ToInt32(rows.Cells["ClAplicaFV"].Value) == 1)
+        //            {
+        //                rows.DefaultCellStyle.BackColor = Color.Orange;
+        //            }
+        //            //Alerta Vencidos
+        //            if (TiempoFaltante.Days <= 0 && Convert.ToInt32(rows.Cells["ClAplicaFV"].Value) == 1)
+        //            {
+        //                rows.DefaultCellStyle.BackColor = Color.Olive;
+        //            }
+        //        }
+        //    }
+        //}
+
+        //This method begins the animation.
+        public void AnimateImage()
         {
-            if (dtgInventario.Rows.Count > 0)
+            dtgAlertas.Rows.Clear();
+            int contador = 0;
+
+            if (!currentlyAnimating)
             {
-                foreach (DataGridViewRow rows in dtgInventario.Rows)
+                //Begin the animation.
+                if (dtgInventario.Rows.Count > 0)
                 {
-                    //Alerta Stock
-                    if (Convert.ToDecimal(rows.Cells["ClStockMinimo"].Value) == Convert.ToDecimal(rows.Cells["ClCantidadExistente"].Value) || Convert.ToDecimal(rows.Cells["ClStockMinimo"].Value) > Convert.ToDecimal(rows.Cells["ClCantidadExistente"].Value))
+                    dtgAlertas.Rows.Add(dtgInventario.Rows.Count);
+
+                    foreach (DataGridViewRow row in this.dtgInventario.Rows)
                     {
-                        rows.DefaultCellStyle.BackColor = Color.Yellow;
+                        if (row.IsNewRow == false)
+                        {
+                            Image ImgStocks = dtgAlertas.Rows[contador].Cells["ClStock15"].Value as Image;
+                            Image ImgAgotado = dtgAlertas.Rows[contador].Cells["ClAgotado15"].Value as Image;
+                            Image ImgProxV = dtgAlertas.Rows[contador].Cells["ClProxV15"].Value as Image;
+                            Image ImgVencido = dtgAlertas.Rows[contador].Cells["ClVencido15"].Value as Image;
+                           
+                            if (ImgStocks != null && ImgAgotado != null && ImgProxV != null && ImgVencido != null)
+                            {
+                                //Alerta Stock
+                                if (Convert.ToDecimal(row.Cells["ClStockMinimo"].Value) == Convert.ToDecimal(row.Cells["ClCantidadExistente"].Value) || Convert.ToDecimal(row.Cells["ClStockMinimo"].Value) > Convert.ToDecimal(row.Cells["ClCantidadExistente"].Value))
+                                {
+                                    ImageAnimator.Animate(ImgStocks, new EventHandler(this.OnFrameChanged));                                  
+                                }
+                                else
+                                {
+                                    dtgAlertas.Rows[contador].Cells["ClStock15"].Value = ((System.Drawing.Image)(resources.GetObject("ClStock15.Image")));
+                                }
+                                //Alerta agotado
+                                if (Convert.ToDecimal(row.Cells["ClCantidadExistente"].Value) == 0)
+                                {
+                                    ImageAnimator.Animate(ImgAgotado, new EventHandler(this.OnFrameChanged));
+                                }
+                                else
+                                {
+                                    dtgAlertas.Rows[contador].Cells["ClAgotado15"].Value = ((System.Drawing.Image)(resources.GetObject("ClAgotado15.Image")));
+                                }
+                                //Alerta proximo a vencer
+                                DateTime FechaVencimiento = Convert.ToDateTime(row.Cells["ClFechaVencimiento"].Value);
+                                DateTime FechaActual = DateTime.Today;
+                                TimeSpan TiempoFaltante = FechaVencimiento.Subtract(FechaActual);
+                                if ((Convert.ToDouble(row.Cells["ClDiasFechaV"].Value) >= TiempoFaltante.Days && TiempoFaltante.Days > 0) && Convert.ToInt32(row.Cells["ClAplicaFV"].Value) == 1)
+                                {
+                                    ImageAnimator.Animate(ImgProxV, new EventHandler(this.OnFrameChanged));
+                                }
+                                else
+                                {
+                                    dtgAlertas.Rows[contador].Cells["ClProxV15"].Value = ((System.Drawing.Image)(resources.GetObject("ClProxV15.Image")));
+                                }
+                                //Alerta Vencidos
+                                if (TiempoFaltante.Days <= 0 && Convert.ToInt32(row.Cells["ClAplicaFV"].Value) == 1)
+                                {
+                                    ImageAnimator.Animate(ImgVencido, new EventHandler(this.OnFrameChanged));
+                                }
+                                else
+                                {
+                                    dtgAlertas.Rows[contador].Cells["ClVencido15"].Value = ((System.Drawing.Image)(resources.GetObject("ClVencido15.Image")));
+                                }
+                            }
+                        }
+                        contador++;
                     }
-                    //Alerta agotado
-                    if (Convert.ToDecimal(rows.Cells["ClCantidadExistente"].Value) == 0)
-                    {
-                        rows.DefaultCellStyle.BackColor = Color.Red;
-                    }
-                    //Alerta Proximo a vencer
-                    if (Convert.ToDecimal(rows.Cells["ClCantidadExistente"].Value) == 0)
-                    {
-                        rows.DefaultCellStyle.BackColor = Color.Red;
-                    }
+                    currentlyAnimating = true;
                 }
-            }
+            }       
+        }
+
+        private void OnFrameChanged(object o, EventArgs e)
+        {
+            //Force a call to the Paint event handler.
+            this.dtgInventario.Invalidate();
+        }
+
+        private void dtgAlertas_Paint(object sender, PaintEventArgs e)
+        {
+            AnimateImage();
+            ImageAnimator.UpdateFrames();
         }
     }
 }
