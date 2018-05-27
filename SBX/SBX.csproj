@@ -366,6 +366,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="RECURSOS\IMAGENES\sirenApagada.png" />
     <Content Include="SBX.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

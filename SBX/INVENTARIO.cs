@@ -28,7 +28,6 @@ namespace SBX
         {
             CargarInventario();
             EstiloTabla();
-            this.dtgInventario.Paint += new PaintEventHandler(dtgAlertas_Paint);
         }
 
         private void EstiloTabla()
@@ -80,6 +79,7 @@ namespace SBX
                     Contador++;
                 }
             }
+            AnimateImage();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -108,6 +108,7 @@ namespace SBX
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
             CargarInventario();
+            EstiloTabla();
         }
 
         private void ExportaExcel()
@@ -193,7 +194,6 @@ namespace SBX
         //This method begins the animation.
         public void AnimateImage()
         {
-            dtgAlertas.Rows.Clear();
             int contador = 0;
 
             if (!currentlyAnimating)
@@ -201,36 +201,34 @@ namespace SBX
                 //Begin the animation.
                 if (dtgInventario.Rows.Count > 0)
                 {
-                    dtgAlertas.Rows.Add(dtgInventario.Rows.Count);
-
                     foreach (DataGridViewRow row in this.dtgInventario.Rows)
                     {
                         if (row.IsNewRow == false)
                         {
-                            Image ImgStocks = dtgAlertas.Rows[contador].Cells["ClStock15"].Value as Image;
-                            Image ImgAgotado = dtgAlertas.Rows[contador].Cells["ClAgotado15"].Value as Image;
-                            Image ImgProxV = dtgAlertas.Rows[contador].Cells["ClProxV15"].Value as Image;
-                            Image ImgVencido = dtgAlertas.Rows[contador].Cells["ClVencido15"].Value as Image;
+                            Image ImgStocks = row.Cells["ClStock15"].Value as Image;
+                            Image ImgAgotado = row.Cells["ClAgotado15"].Value as Image;
+                            Image ImgProxV = row.Cells["ClProxV15"].Value as Image;
+                            Image ImgVencido = row.Cells["ClVencido15"].Value as Image;
                            
                             if (ImgStocks != null && ImgAgotado != null && ImgProxV != null && ImgVencido != null)
                             {
                                 //Alerta Stock
                                 if (Convert.ToDecimal(row.Cells["ClStockMinimo"].Value) == Convert.ToDecimal(row.Cells["ClCantidadExistente"].Value) || Convert.ToDecimal(row.Cells["ClStockMinimo"].Value) > Convert.ToDecimal(row.Cells["ClCantidadExistente"].Value))
                                 {
-                                    ImageAnimator.Animate(ImgStocks, new EventHandler(this.OnFrameChanged));                                  
+                                    row.Cells["ClStock15"].Value = ((System.Drawing.Image)(resources.GetObject("ClStock15.Image")));
                                 }
                                 else
                                 {
-                                    dtgAlertas.Rows[contador].Cells["ClStock15"].Value = ((System.Drawing.Image)(resources.GetObject("ClStock15.Image")));
+                                    row.Cells["ClStock15"].Value = System.Drawing.Image.FromFile("D:\\PROYECTO\\SBX\\RECURSOS\\iconos\\sirenApagada.png");      
                                 }
                                 //Alerta agotado
                                 if (Convert.ToDecimal(row.Cells["ClCantidadExistente"].Value) == 0)
                                 {
-                                    ImageAnimator.Animate(ImgAgotado, new EventHandler(this.OnFrameChanged));
+                                    row.Cells["ClAgotado15"].Value = ((System.Drawing.Image)(resources.GetObject("ClAgotado15.Image")));
                                 }
                                 else
                                 {
-                                    dtgAlertas.Rows[contador].Cells["ClAgotado15"].Value = ((System.Drawing.Image)(resources.GetObject("ClAgotado15.Image")));
+                                    row.Cells["ClAgotado15"].Value = System.Drawing.Image.FromFile("D:\\PROYECTO\\SBX\\RECURSOS\\iconos\\sirenApagada.png");
                                 }
                                 //Alerta proximo a vencer
                                 DateTime FechaVencimiento = Convert.ToDateTime(row.Cells["ClFechaVencimiento"].Value);
@@ -238,20 +236,20 @@ namespace SBX
                                 TimeSpan TiempoFaltante = FechaVencimiento.Subtract(FechaActual);
                                 if ((Convert.ToDouble(row.Cells["ClDiasFechaV"].Value) >= TiempoFaltante.Days && TiempoFaltante.Days > 0) && Convert.ToInt32(row.Cells["ClAplicaFV"].Value) == 1)
                                 {
-                                    ImageAnimator.Animate(ImgProxV, new EventHandler(this.OnFrameChanged));
+                                    row.Cells["ClProxV15"].Value = ((System.Drawing.Image)(resources.GetObject("ClProxV15.Image")));
                                 }
                                 else
                                 {
-                                    dtgAlertas.Rows[contador].Cells["ClProxV15"].Value = ((System.Drawing.Image)(resources.GetObject("ClProxV15.Image")));
+                                    row.Cells["ClProxV15"].Value = Image.FromFile("D:\\PROYECTO\\SBX\\RECURSOS\\iconos\\sirenApagada.png");
                                 }
                                 //Alerta Vencidos
                                 if (TiempoFaltante.Days <= 0 && Convert.ToInt32(row.Cells["ClAplicaFV"].Value) == 1)
                                 {
-                                    ImageAnimator.Animate(ImgVencido, new EventHandler(this.OnFrameChanged));
+                                    row.Cells["ClVencido15"].Value = ((System.Drawing.Image)(resources.GetObject("ClVencido15.Image")));
                                 }
                                 else
                                 {
-                                    dtgAlertas.Rows[contador].Cells["ClVencido15"].Value = ((System.Drawing.Image)(resources.GetObject("ClVencido15.Image")));
+                                    row.Cells["ClVencido15"].Value = Image.FromFile("D:\\PROYECTO\\SBX\\RECURSOS\\iconos\\sirenApagada.png");
                                 }
                             }
                         }
@@ -260,18 +258,6 @@ namespace SBX
                     currentlyAnimating = true;
                 }
             }       
-        }
-
-        private void OnFrameChanged(object o, EventArgs e)
-        {
-            //Force a call to the Paint event handler.
-            this.dtgInventario.Invalidate();
-        }
-
-        private void dtgAlertas_Paint(object sender, PaintEventArgs e)
-        {
-            AnimateImage();
-            ImageAnimator.UpdateFrames();
         }
     }
 }
