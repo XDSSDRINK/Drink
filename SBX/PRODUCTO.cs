@@ -282,7 +282,8 @@ namespace SBX
                     }
                     dtgProductos.Rows[contador].Cells["ClGeneraIVA"].Value = GeneraIVA;
                     dtgProductos.Rows[contador].Cells["ClEstado"].Value = row["Estado"];
-
+                    dtgProductos.Rows[contador].Cells["clStockMaximo"].Value = row["StockMaximo"];
+                    dtgProductos.Rows[contador].Cells["ClDiasAlertFechaV"].Value = row["DiasAlertFechaV"];
                     contador++;
                 }
             }
@@ -332,7 +333,8 @@ namespace SBX
                         }
                         dtgProductos.Rows[contador].Cells["ClGeneraIVA"].Value = GeneraIVA;
                         dtgProductos.Rows[contador].Cells["ClEstado"].Value = row["Estado"];
-
+                        dtgProductos.Rows[contador].Cells["clStockMaximo"].Value = row["StockMaximo"];
+                        dtgProductos.Rows[contador].Cells["ClDiasAlertFechaV"].Value = row["DiasAlertFechaV"];
                         contador++;
                     }
                 }
@@ -382,7 +384,8 @@ namespace SBX
                             }
                             dtgProductos.Rows[contador].Cells["ClGeneraIVA"].Value = GeneraIVA;
                             dtgProductos.Rows[contador].Cells["ClEstado"].Value = row["Estado"];
-
+                            dtgProductos.Rows[contador].Cells["clStockMaximo"].Value = row["StockMaximo"];
+                            dtgProductos.Rows[contador].Cells["ClDiasAlertFechaV"].Value = row["DiasAlertFechaV"];
                             contador++;
                         }
                     }
