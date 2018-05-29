@@ -18,7 +18,6 @@ namespace SBX
         DataTable DT;
         int Fila = 0;
         int Contador = 0;
-        bool currentlyAnimating = false;
         public INVENTARIO()
         {
             InitializeComponent();
@@ -79,7 +78,7 @@ namespace SBX
                     Contador++;
                 }
             }
-            AnimateImage();
+            AnimateImage(false);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -108,7 +107,6 @@ namespace SBX
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
             CargarInventario();
-            EstiloTabla();
         }
 
         private void ExportaExcel()
@@ -192,7 +190,7 @@ namespace SBX
         //}
 
         //This method begins the animation.
-        public void AnimateImage()
+        public void AnimateImage(bool currentlyAnimating)
         {
             int contador = 0;
 
@@ -219,7 +217,7 @@ namespace SBX
                                 }
                                 else
                                 {
-                                    row.Cells["ClStock15"].Value = System.Drawing.Image.FromFile("D:\\PROYECTO\\SBX\\RECURSOS\\iconos\\sirenApagada.png");      
+                                    row.Cells["ClStock15"].Value = System.Drawing.Image.FromFile("D:\\PROYECTO\\SBX\\RECURSOS\\iconos\\sirenApagada.png");
                                 }
                                 //Alerta agotado
                                 if (Convert.ToDecimal(row.Cells["ClCantidadExistente"].Value) == 0)
