@@ -12,9 +12,21 @@ namespace SBX
 {
     public partial class VENTAS : Form
     {
+        REGISTRO_VENTASS rEGISTRO_VENTASS = new REGISTRO_VENTASS();
+
         public VENTAS()
         {
             InitializeComponent();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            rEGISTRO_VENTASS.ShowDialog();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

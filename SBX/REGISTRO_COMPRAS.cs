@@ -90,6 +90,7 @@ namespace SBX
             }
 
         }
+
         private void EstiloTabla()
         {
             dtgRegistroCompras.EnableHeadersVisualStyles = false;

@@ -578,6 +578,7 @@
             this.btnVentas.TabIndex = 0;
             this.btnVentas.Text = "Ventas";
             this.btnVentas.UseVisualStyleBackColor = true;
+            this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
             // pnlArriba
             // 
@@ -776,7 +777,6 @@
         public System.Windows.Forms.Panel pnlCentral;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label lblFormulario;
         private System.Windows.Forms.Label lblNombreUsuario;
         public System.Windows.Forms.Button btnVentas;
         public System.Windows.Forms.Button btnCompras;
@@ -797,5 +797,6 @@
         public System.Windows.Forms.Button btnCompania;
         public System.Windows.Forms.Button btnInventario;
         private System.Windows.Forms.Panel panel10;
+        public System.Windows.Forms.Label lblFormulario;
     }
 }

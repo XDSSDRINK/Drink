@@ -17,6 +17,7 @@ namespace SBX
         MENSAJE_CONFIRMACION mENSAJE_CONFIRMACION = new MENSAJE_CONFIRMACION();
         DETALLE_PRODUCTO DTP = new DETALLE_PRODUCTO();
         CONTROLLER.Usuario usuario = new CONTROLLER.Usuario();
+       
  
         DataTable DT;
         int contador;
@@ -46,6 +47,7 @@ namespace SBX
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
+           
             this.Hide();
         }
 
