@@ -120,6 +120,7 @@
     <Compile Include="CONTROLLER\TipoCuenta.cs" />
     <Compile Include="CONTROLLER\UnidadMedida.cs" />
     <Compile Include="CONTROLLER\Usuario.cs" />
+    <Compile Include="CONTROLLER\Ventas.cs" />
     <Compile Include="DETALLE_CLIENTES.cs">
       <SubType>Form</SubType>
     </Compile>

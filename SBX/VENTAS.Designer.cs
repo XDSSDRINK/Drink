@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VENTAS));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlArriba = new System.Windows.Forms.Panel();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -46,10 +46,25 @@
             this.dtpkFechaIni = new System.Windows.Forms.DateTimePicker();
             this.txtConsecutivoDoc = new System.Windows.Forms.TextBox();
             this.txtNombreDoc = new System.Windows.Forms.TextBox();
-            this.dtgProductos = new System.Windows.Forms.DataGridView();
+            this.dtgVentas = new System.Windows.Forms.DataGridView();
+            this.ClFechaRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClHoraRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClNombreDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClConsecutivoDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClCodigoB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClNombreP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClReferencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClIVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClValorVeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClDescuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClTotalVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClMedioPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlArriba.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgVentas)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlArriba
@@ -104,6 +119,7 @@
             this.btnActualizar.Size = new System.Drawing.Size(33, 31);
             this.btnActualizar.TabIndex = 3;
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnAgregar
             // 
@@ -213,56 +229,167 @@
             this.txtNombreDoc.TabIndex = 8;
             this.txtNombreDoc.Text = "Nombre Doc";
             // 
-            // dtgProductos
+            // dtgVentas
             // 
-            this.dtgProductos.AllowUserToAddRows = false;
-            this.dtgProductos.AllowUserToDeleteRows = false;
-            this.dtgProductos.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtgProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
-            this.dtgProductos.BackgroundColor = System.Drawing.Color.White;
-            this.dtgProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtgProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
-            this.dtgProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgProductos.DefaultCellStyle = dataGridViewCellStyle19;
-            this.dtgProductos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgProductos.GridColor = System.Drawing.Color.CadetBlue;
-            this.dtgProductos.Location = new System.Drawing.Point(0, 87);
-            this.dtgProductos.Name = "dtgProductos";
-            this.dtgProductos.ReadOnly = true;
-            this.dtgProductos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
-            this.dtgProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dtgProductos.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dtgProductos.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtgProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgProductos.Size = new System.Drawing.Size(730, 314);
-            this.dtgProductos.TabIndex = 15;
+            this.dtgVentas.AllowUserToAddRows = false;
+            this.dtgVentas.AllowUserToDeleteRows = false;
+            this.dtgVentas.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgVentas.BackgroundColor = System.Drawing.Color.White;
+            this.dtgVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgVentas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ClFechaRegistro,
+            this.ClHoraRegistro,
+            this.ClUsuario,
+            this.ClNombreDocumento,
+            this.ClConsecutivoDoc,
+            this.ClItem,
+            this.ClCodigoB,
+            this.ClNombreP,
+            this.ClReferencia,
+            this.ClIVA,
+            this.ClCantidad,
+            this.ClValorVeta,
+            this.ClDescuento,
+            this.ClTotalVenta,
+            this.ClMedioPago});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgVentas.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgVentas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgVentas.GridColor = System.Drawing.Color.CadetBlue;
+            this.dtgVentas.Location = new System.Drawing.Point(0, 87);
+            this.dtgVentas.Name = "dtgVentas";
+            this.dtgVentas.ReadOnly = true;
+            this.dtgVentas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dtgVentas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dtgVentas.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dtgVentas.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgVentas.Size = new System.Drawing.Size(730, 314);
+            this.dtgVentas.TabIndex = 15;
+            // 
+            // ClFechaRegistro
+            // 
+            this.ClFechaRegistro.HeaderText = "Fecha ";
+            this.ClFechaRegistro.Name = "ClFechaRegistro";
+            this.ClFechaRegistro.ReadOnly = true;
+            // 
+            // ClHoraRegistro
+            // 
+            this.ClHoraRegistro.HeaderText = "Hora";
+            this.ClHoraRegistro.Name = "ClHoraRegistro";
+            this.ClHoraRegistro.ReadOnly = true;
+            // 
+            // ClUsuario
+            // 
+            this.ClUsuario.HeaderText = "Usuario";
+            this.ClUsuario.Name = "ClUsuario";
+            this.ClUsuario.ReadOnly = true;
+            // 
+            // ClNombreDocumento
+            // 
+            this.ClNombreDocumento.HeaderText = "Nombre documento";
+            this.ClNombreDocumento.Name = "ClNombreDocumento";
+            this.ClNombreDocumento.ReadOnly = true;
+            this.ClNombreDocumento.Width = 200;
+            // 
+            // ClConsecutivoDoc
+            // 
+            this.ClConsecutivoDoc.HeaderText = "Consecutivo Doc";
+            this.ClConsecutivoDoc.Name = "ClConsecutivoDoc";
+            this.ClConsecutivoDoc.ReadOnly = true;
+            this.ClConsecutivoDoc.Width = 200;
+            // 
+            // ClItem
+            // 
+            this.ClItem.HeaderText = "Item";
+            this.ClItem.Name = "ClItem";
+            this.ClItem.ReadOnly = true;
+            // 
+            // ClCodigoB
+            // 
+            this.ClCodigoB.HeaderText = "Codigo barras";
+            this.ClCodigoB.Name = "ClCodigoB";
+            this.ClCodigoB.ReadOnly = true;
+            this.ClCodigoB.Width = 200;
+            // 
+            // ClNombreP
+            // 
+            this.ClNombreP.HeaderText = "Nombre";
+            this.ClNombreP.Name = "ClNombreP";
+            this.ClNombreP.ReadOnly = true;
+            // 
+            // ClReferencia
+            // 
+            this.ClReferencia.HeaderText = "Referencia";
+            this.ClReferencia.Name = "ClReferencia";
+            this.ClReferencia.ReadOnly = true;
+            // 
+            // ClIVA
+            // 
+            this.ClIVA.HeaderText = "IVA";
+            this.ClIVA.Name = "ClIVA";
+            this.ClIVA.ReadOnly = true;
+            // 
+            // ClCantidad
+            // 
+            this.ClCantidad.HeaderText = "Cantidad";
+            this.ClCantidad.Name = "ClCantidad";
+            this.ClCantidad.ReadOnly = true;
+            // 
+            // ClValorVeta
+            // 
+            this.ClValorVeta.HeaderText = "Valor";
+            this.ClValorVeta.Name = "ClValorVeta";
+            this.ClValorVeta.ReadOnly = true;
+            // 
+            // ClDescuento
+            // 
+            this.ClDescuento.HeaderText = "Descuento";
+            this.ClDescuento.Name = "ClDescuento";
+            this.ClDescuento.ReadOnly = true;
+            // 
+            // ClTotalVenta
+            // 
+            this.ClTotalVenta.HeaderText = "Total venta";
+            this.ClTotalVenta.Name = "ClTotalVenta";
+            this.ClTotalVenta.ReadOnly = true;
+            this.ClTotalVenta.Width = 150;
+            // 
+            // ClMedioPago
+            // 
+            this.ClMedioPago.HeaderText = "Medio de pago";
+            this.ClMedioPago.Name = "ClMedioPago";
+            this.ClMedioPago.ReadOnly = true;
+            this.ClMedioPago.Width = 200;
             // 
             // VENTAS
             // 
@@ -270,7 +397,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(730, 401);
-            this.Controls.Add(this.dtgProductos);
+            this.Controls.Add(this.dtgVentas);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlArriba);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -278,11 +405,12 @@
             this.Name = "VENTAS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VENTAS";
+            this.Load += new System.EventHandler(this.VENTAS_Load);
             this.pnlArriba.ResumeLayout(false);
             this.pnlArriba.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgProductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgVentas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -302,6 +430,21 @@
         private System.Windows.Forms.DateTimePicker dtpkFechaIni;
         private System.Windows.Forms.TextBox txtConsecutivoDoc;
         private System.Windows.Forms.TextBox txtNombreDoc;
-        private System.Windows.Forms.DataGridView dtgProductos;
+        private System.Windows.Forms.DataGridView dtgVentas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClFechaRegistro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClHoraRegistro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClNombreDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClConsecutivoDoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClCodigoB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClNombreP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClReferencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClIVA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClValorVeta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClDescuento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClTotalVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClMedioPago;
     }
 }
