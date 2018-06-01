@@ -58,7 +58,21 @@ namespace SBX
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
+            Limpiar();
             this.Close();
+        }
+
+        private void Limpiar()
+        {
+            txtProducto.Text = "";
+            dtgRegistroVentas.Rows.Clear();
+            txtCliente.Text = "Cliente";
+            lblNombreCliente.Text = "--";
+            txtRecibido.Text = "";
+            txtCambio.Text = "";
+            txtTotal.Text = "";
+            txtImpuesto.Text = "";
+            txtCantidad.Text = "";       
         }
 
         private void pnlTitulo_MouseDown(object sender, MouseEventArgs e)
@@ -73,40 +87,92 @@ namespace SBX
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void txtProducto_KeyUp(object sender, KeyEventArgs e)
-        {
-            CargaProductoVenta();
-        }
-
         private void CargaProductoVenta()
         {
-            ventas.buscar = txtProducto.Text;
-            DT = ventas.producto_venta();
-            dtgRegistroVentas.Rows.Clear();
-            if (DT.Rows.Count > 0)
+            if (txtProducto.Text.Trim() != "")
             {
-                Filas = DT.Rows.Count;
-                Contador = 0;
-                dtgRegistroVentas.Rows.Add(Filas);
-                foreach (DataRow rows in DT.Rows)
+                ventas.buscar = txtProducto.Text;
+
+                DT = ventas.producto_venta();
+
+                if (DT.Rows.Count > 0)
                 {
-                    dtgRegistroVentas.Rows[Contador].Cells["ClNombreDoc"].Value = "Prueba";
-                    dtgRegistroVentas.Rows[Contador].Cells["ClConseDoc"].Value = "0001";
-                    dtgRegistroVentas.Rows[Contador].Cells["ClItem"].Value = rows["ITEM"].ToString();
-                    dtgRegistroVentas.Rows[Contador].Cells["ClCodigoBarras"].Value = rows["CODIGO_BARRAS"].ToString();
-                    dtgRegistroVentas.Rows[Contador].Cells["ClNombre"].Value = rows["NOMBRE"].ToString();
-                    dtgRegistroVentas.Rows[Contador].Cells["ClReferencia"].Value = rows["REFERENCIA"].ToString();
-                    dtgRegistroVentas.Rows[Contador].Cells["ClCantidad"].Value = "1";
-                    double ValorUnidad = Convert.ToDouble(rows["VALOR_UN"]);
-                    dtgRegistroVentas.Rows[Contador].Cells["ClValorUnidad"].Value = ValorUnidad.ToString("N2");
-                    dtgRegistroVentas.Rows[Contador].Cells["ClDescuento"].Value = "0";
-                    dtgRegistroVentas.Rows[Contador].Cells["ClValorDesc"].Value = "0";
-                    double ValorTotal = Convert.ToDouble(rows["VALOR_UN"]) * 1;
-                    dtgRegistroVentas.Rows[Contador].Cells["ClValorTotal"].Value = ValorTotal.ToString("N2");
-                    dtgRegistroVentas.Rows[Contador].Cells["ClIva"].Value = rows["IVA"].ToString();
-                    dtgRegistroVentas.Rows[Contador].Cells["ClValorIva"].Value = "0";
+                    DataRow Pro = DT.Rows[0];
+                    double NuevaCantidad = 0;
+                    //verificar existencia de producto
+
+                    if (dtgRegistroVentas.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow proexit in dtgRegistroVentas.Rows)
+                        {
+                            if (proexit.Cells["ClItem"].Value == Pro["ITEM"] || proexit.Cells["ClCodigoBarras"].Value == Pro["CODIGO_BARRAS"])
+                            {
+                                NuevaCantidad = Convert.ToDouble(proexit.Cells["ClCantidad"].Value) + 1;
+                                proexit.Cells["ClCantidad"].Value = NuevaCantidad.ToString();
+                            }
+                            else
+                            {
+                                Filas = DT.Rows.Count;
+                                dtgRegistroVentas.Rows.Add(Filas);
+                                foreach (DataRow rows in DT.Rows)
+                                {
+                                    dtgRegistroVentas.Rows[Contador].Cells["ClNombreDoc"].Value = "Prueba";
+                                    dtgRegistroVentas.Rows[Contador].Cells["ClConseDoc"].Value = "0001";
+                                    dtgRegistroVentas.Rows[Contador].Cells["ClItem"].Value = rows["ITEM"].ToString();
+                                    dtgRegistroVentas.Rows[Contador].Cells["ClCodigoBarras"].Value = rows["CODIGO_BARRAS"].ToString();
+                                    dtgRegistroVentas.Rows[Contador].Cells["ClNombre"].Value = rows["NOMBRE"].ToString();
+                                    dtgRegistroVentas.Rows[Contador].Cells["ClReferencia"].Value = rows["REFERENCIA"].ToString();
+                                    dtgRegistroVentas.Rows[Contador].Cells["ClCantidad"].Value = "1";
+                                    double ValorUnidad = Convert.ToDouble(rows["VALOR_UN"]);
+                                    dtgRegistroVentas.Rows[Contador].Cells["ClValorUnidad"].Value = ValorUnidad.ToString("N2");
+                                    dtgRegistroVentas.Rows[Contador].Cells["ClDescuento"].Value = "0";
+                                    dtgRegistroVentas.Rows[Contador].Cells["ClValorDesc"].Value = "0";
+                                    double ValorTotal = Convert.ToDouble(rows["VALOR_UN"]) * 1;
+                                    dtgRegistroVentas.Rows[Contador].Cells["ClValorTotal"].Value = ValorTotal.ToString("N2");
+                                    dtgRegistroVentas.Rows[Contador].Cells["ClIva"].Value = rows["IVA"].ToString();
+                                    dtgRegistroVentas.Rows[Contador].Cells["ClValorIva"].Value = "0";
+                                    Contador++;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Filas = DT.Rows.Count;
+                        dtgRegistroVentas.Rows.Add(Filas);
+                        foreach (DataRow rows in DT.Rows)
+                        {
+                            dtgRegistroVentas.Rows[Contador].Cells["ClNombreDoc"].Value = "Prueba";
+                            dtgRegistroVentas.Rows[Contador].Cells["ClConseDoc"].Value = "0001";
+                            dtgRegistroVentas.Rows[Contador].Cells["ClItem"].Value = rows["ITEM"].ToString();
+                            dtgRegistroVentas.Rows[Contador].Cells["ClCodigoBarras"].Value = rows["CODIGO_BARRAS"].ToString();
+                            dtgRegistroVentas.Rows[Contador].Cells["ClNombre"].Value = rows["NOMBRE"].ToString();
+                            dtgRegistroVentas.Rows[Contador].Cells["ClReferencia"].Value = rows["REFERENCIA"].ToString();
+                            dtgRegistroVentas.Rows[Contador].Cells["ClCantidad"].Value = "1";
+                            double ValorUnidad = Convert.ToDouble(rows["VALOR_UN"]);
+                            dtgRegistroVentas.Rows[Contador].Cells["ClValorUnidad"].Value = ValorUnidad.ToString("N2");
+                            dtgRegistroVentas.Rows[Contador].Cells["ClDescuento"].Value = "0";
+                            dtgRegistroVentas.Rows[Contador].Cells["ClValorDesc"].Value = "0";
+                            double ValorTotal = Convert.ToDouble(rows["VALOR_UN"]) * 1;
+                            dtgRegistroVentas.Rows[Contador].Cells["ClValorTotal"].Value = ValorTotal.ToString("N2");
+                            dtgRegistroVentas.Rows[Contador].Cells["ClIva"].Value = rows["IVA"].ToString();
+                            dtgRegistroVentas.Rows[Contador].Cells["ClValorIva"].Value = "0";
+                            Contador++;
+                        }
+                    }
                 }
-            }
+                else
+                {
+                    errorProvider1.SetError(txtProducto,"Producto no disponible");
+                }
+
+                txtProducto.Text = "";
+            } 
+        }
+
+        private void txtProducto_Leave(object sender, EventArgs e)
+        {
+            CargaProductoVenta();
         }
     }
 }
