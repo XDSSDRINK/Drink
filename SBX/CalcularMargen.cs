@@ -27,10 +27,15 @@ namespace SBX
         public string Modulo { get; set; }
         public string Producto { get; set; }
         public string Costos { get; set; }
+        public string Margen { get; set; }
         double Costo = 0;
         double Aumento = 0;
-        double PrecioVenta = 0;
+        double MargenV = 0;
+
+        public double PrecioVenta { get; set; }
         double Valor = 0;
+        double Descuento = 0;
+        double NuevoPrecioVenta = 0;
 
         //// Create a new form.
         Form mdiChildForm = new Form();
@@ -52,7 +57,10 @@ namespace SBX
 
         private void CalcularMargen_Load(object sender, EventArgs e)
         {
-            txtCosto.Text = Costos;
+            Costo = Convert.ToDouble(Costos);
+            txtCosto.Text = Costo.ToString("N2");
+            MargenV = Convert.ToDouble(Margen);
+            lblMargen.Text = MargenV.ToString("N2");
             lblProducto.Text = Producto;
             EstiloTabla();
             CalcularValores();
@@ -126,11 +134,42 @@ namespace SBX
         {
             if (Modulo == "Venta")
             {
-
+                CalculoDescuentos();
             }
             else
             {
                 CalculoPrecios();
+            }
+        }
+
+        private void CalculoDescuentos()
+        {
+            Costo = Convert.ToDouble(txtCosto.Text);
+            Descuento = Convert.ToDouble(txtPorcentaje.Text);
+            txtCosto.Enabled = false;
+            if (Descuento < 0)
+            {
+                txtPorcentaje.Text = "0";
+                Descuento = 0;
+            }
+            dtgCalculoMargen.Rows.Clear();
+
+            while (Descuento <= 100)
+            {
+                Valor = PrecioVenta * (Descuento / 100);
+                NuevoPrecioVenta = PrecioVenta - Valor;
+                dtgCalculoMargen.Columns[0].HeaderText = "Precio UN";
+                dtgCalculoMargen.Columns[2].HeaderText = "Descuento";
+                dtgCalculoMargen.Rows.Add(PrecioVenta.ToString("N2"), Descuento * -1, Valor.ToString("N2"), NuevoPrecioVenta.ToString("N2"));
+
+                if (Convert.ToDouble(txtPorcentaje.Text) == 0)
+                {
+                    Descuento++;
+                }
+                else
+                {
+                    Descuento = Descuento + Convert.ToDouble(txtPorcentaje.Text);
+                }
             }
         }
 

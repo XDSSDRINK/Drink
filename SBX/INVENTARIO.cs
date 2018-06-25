@@ -194,68 +194,70 @@ namespace SBX
         {
             int contador = 0;
 
-            if (!currentlyAnimating)
-            {
-                //Begin the animation.
-                if (dtgInventario.Rows.Count > 0)
-                {
-                    foreach (DataGridViewRow row in this.dtgInventario.Rows)
-                    {
-                        if (row.IsNewRow == false)
-                        {
-                            Image ImgStocks = row.Cells["ClStock15"].Value as Image;
-                            Image ImgAgotado = row.Cells["ClAgotado15"].Value as Image;
-                            Image ImgProxV = row.Cells["ClProxV15"].Value as Image;
-                            Image ImgVencido = row.Cells["ClVencido15"].Value as Image;
+            //if (!currentlyAnimating)
+            //{
+            //    //Begin the animation.
+            //    if (dtgInventario.Rows.Count > 0)
+            //    {
+            //        foreach (DataGridViewRow row in this.dtgInventario.Rows)
+            //        {
+            //            if (row.IsNewRow == false)
+            //            {
+            //                Image ImgStocks = row.Cells["ClStock15"].Value as Image;
+            //                Image ImgAgotado = row.Cells["ClAgotado15"].Value as Image;
+            //                Image ImgProxV = row.Cells["ClProxV15"].Value as Image;
+            //                Image ImgVencido = row.Cells["ClVencido15"].Value as Image;
                            
-                            if (ImgStocks != null && ImgAgotado != null && ImgProxV != null && ImgVencido != null)
-                            {
-                                //Alerta Stock
-                                if (Convert.ToDecimal(row.Cells["ClStockMinimo"].Value) == Convert.ToDecimal(row.Cells["ClCantidadExistente"].Value) || Convert.ToDecimal(row.Cells["ClStockMinimo"].Value) > Convert.ToDecimal(row.Cells["ClCantidadExistente"].Value))
-                                {
-                                    row.Cells["ClStock15"].Value = ((System.Drawing.Image)(resources.GetObject("ClStock15.Image")));
-                                }
-                                else
-                                {
-                                    row.Cells["ClStock15"].Value = System.Drawing.Image.FromFile("D:\\PROYECTO\\SBX\\RECURSOS\\iconos\\sirenApagada.png");
-                                }
-                                //Alerta agotado
-                                if (Convert.ToDecimal(row.Cells["ClCantidadExistente"].Value) == 0)
-                                {
-                                    row.Cells["ClAgotado15"].Value = ((System.Drawing.Image)(resources.GetObject("ClAgotado15.Image")));
-                                }
-                                else
-                                {
-                                    row.Cells["ClAgotado15"].Value = System.Drawing.Image.FromFile("D:\\PROYECTO\\SBX\\RECURSOS\\iconos\\sirenApagada.png");
-                                }
-                                //Alerta proximo a vencer
-                                DateTime FechaVencimiento = Convert.ToDateTime(row.Cells["ClFechaVencimiento"].Value);
-                                DateTime FechaActual = DateTime.Today;
-                                TimeSpan TiempoFaltante = FechaVencimiento.Subtract(FechaActual);
-                                if ((Convert.ToDouble(row.Cells["ClDiasFechaV"].Value) >= TiempoFaltante.Days && TiempoFaltante.Days > 0) && Convert.ToInt32(row.Cells["ClAplicaFV"].Value) == 1)
-                                {
-                                    row.Cells["ClProxV15"].Value = ((System.Drawing.Image)(resources.GetObject("ClProxV15.Image")));
-                                }
-                                else
-                                {
-                                    row.Cells["ClProxV15"].Value = Image.FromFile("D:\\PROYECTO\\SBX\\RECURSOS\\iconos\\sirenApagada.png");
-                                }
-                                //Alerta Vencidos
-                                if (TiempoFaltante.Days <= 0 && Convert.ToInt32(row.Cells["ClAplicaFV"].Value) == 1)
-                                {
-                                    row.Cells["ClVencido15"].Value = ((System.Drawing.Image)(resources.GetObject("ClVencido15.Image")));
-                                }
-                                else
-                                {
-                                    row.Cells["ClVencido15"].Value = Image.FromFile("D:\\PROYECTO\\SBX\\RECURSOS\\iconos\\sirenApagada.png");
-                                }
-                            }
-                        }
-                        contador++;
-                    }
-                    currentlyAnimating = true;
-                }
-            }       
+            //                if (ImgStocks != null && ImgAgotado != null && ImgProxV != null && ImgVencido != null)
+            //                {
+            //                    //Alerta Stock
+            //                    if (Convert.ToDecimal(row.Cells["ClStockMinimo"].Value) == Convert.ToDecimal(row.Cells["ClCantidadExistente"].Value) || Convert.ToDecimal(row.Cells["ClStockMinimo"].Value) > Convert.ToDecimal(row.Cells["ClCantidadExistente"].Value))
+            //                    {
+            //                        row.Cells["ClStock15"].Value = ((System.Drawing.Image)(resources.GetObject("ClStock15.Image")));
+            //                    }
+            //                    else
+            //                    {
+            //                        row.Cells["CLStock15"].Value = Application.StartupPath + "\\RECURSOS\\IMAGENES\\sirenApagada.png";
+            //                        //row.Cells["ClStock15"].Value = System.Drawing.Image.FromFile("D:\\PROYECTO\\SBX\\RECURSOS\\iconos\\sirenApagada.png");
+            //                    }
+            //                    //Alerta agotado
+            //                    if (Convert.ToDecimal(row.Cells["ClCantidadExistente"].Value) == 0)
+            //                    {
+                                   
+            //                        row.Cells["ClAgotado15"].Value = ((System.Drawing.Image)(resources.GetObject("ClAgotado15.Image")));
+            //                    }
+            //                    else
+            //                    {
+            //                        row.Cells["ClAgotado15"].Value = Application.StartupPath + "\\RECURSOS\\IMAGENES\\sirenApagada.png";
+            //                    }
+            //                    //Alerta proximo a vencer
+            //                    DateTime FechaVencimiento = Convert.ToDateTime(row.Cells["ClFechaVencimiento"].Value);
+            //                    DateTime FechaActual = DateTime.Today;
+            //                    TimeSpan TiempoFaltante = FechaVencimiento.Subtract(FechaActual);
+            //                    if ((Convert.ToDouble(row.Cells["ClDiasFechaV"].Value) >= TiempoFaltante.Days && TiempoFaltante.Days > 0) && Convert.ToInt32(row.Cells["ClAplicaFV"].Value) == 1)
+            //                    {
+            //                        row.Cells["ClProxV15"].Value = ((System.Drawing.Image)(resources.GetObject("ClProxV15.Image")));
+            //                    }
+            //                    else
+            //                    {
+            //                        row.Cells["ClProxV15"].Value = Application.StartupPath + "\\RECURSOS\\IMAGENES\\sirenApagada.png";
+            //                    }
+            //                    //Alerta Vencidos
+            //                    if (TiempoFaltante.Days <= 0 && Convert.ToInt32(row.Cells["ClAplicaFV"].Value) == 1)
+            //                    {
+            //                        row.Cells["ClVencido15"].Value = ((System.Drawing.Image)(resources.GetObject("ClVencido15.Image")));
+            //                    }
+            //                    else
+            //                    {
+            //                        row.Cells["ClVencido15"].Value = Application.StartupPath + "\\RECURSOS\\IMAGENES\\sirenApagada.png";
+            //                    }
+            //                }
+            //            }
+            //            contador++;
+            //        }
+            //        currentlyAnimating = true;
+            //    }
+            //}       
         }
     }
 }

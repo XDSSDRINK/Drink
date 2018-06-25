@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace SBX
 {
     public partial class INICIO : Form
     {
         MENSAJE_CONFIRMACION mENSAJE_CONFIRMACION = new MENSAJE_CONFIRMACION();
+        MENSAJE_ERROR msgError = new MENSAJE_ERROR();
         COMPRAS cOMPRAS = new COMPRAS();
         PRODUCTO pRODUCTO = new PRODUCTO();
         PROVEEDORES pROVEEDORES = new PROVEEDORES();
@@ -24,11 +26,15 @@ namespace SBX
         CLIENTES cLIENTES = new CLIENTES();
         INVENTARIO iNVENTARIO = new INVENTARIO();
         VENTAS vENTAS = new VENTAS();
-
+        INVENTARIOS iNVENTARIOS = new INVENTARIOS();
+        CONTROLLER.Caja cj = new CONTROLLER.Caja();
+        CIERRE_BILLETES Cbi = new CIERRE_BILLETES();
 
         CONTROLLER.Usuario usuario = new CONTROLLER.Usuario();
 
         DataTable DT;
+        int CodigoUsuario= 0;
+        DataRow rows;
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -46,6 +52,7 @@ namespace SBX
         private void INICIO_Load(object sender, EventArgs e)
         {
             CargarUsuario();
+            ValidacionCaja();
         }
 
         private void CargarUsuario()
@@ -60,6 +67,7 @@ namespace SBX
                         lblUsuario.Text = perso["Nombres"].ToString() + " " + perso["Apellidos"].ToString() + " ("+ perso["Usuario"].ToString()+")";
                         lblNombreUsuario.Text = perso["Usuario"].ToString();
                         ValidacionRolPermiso(perso["IDRol"].ToString());
+                        CodigoUsuario = Convert.ToInt32(perso["CodigoUsuario"]);
                     }
                 }
             }
@@ -74,7 +82,7 @@ namespace SBX
             {
                 foreach (DataRow rolPer in DT.Rows)
                 {
-                    switch (rolPer["Modulo"])
+                    switch (rolPer["Modulo"].ToString())
                     {
                         case "VENTAS":
                             btnVentas.Enabled = true;
@@ -297,14 +305,110 @@ namespace SBX
 
         private void btnInventario_Click(object sender, EventArgs e)
         {
-
+            pnlCentral.BackgroundImage = null;
+            AbrirFormularioEnPanel(iNVENTARIOS);
+            lblFormulario.Text = btnInventario.Text;
         }
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
             pnlCentral.BackgroundImage = null;
+            vENTAS.Usuario = lblNombreUsuario.Text;
             AbrirFormularioEnPanel(vENTAS);
             lblFormulario.Text = btnVentas.Text;
+        }
+
+        private void btnCompania_Click(object sender, EventArgs e)
+        {
+            COMPANIA cmp = new COMPANIA();
+            cmp.Usuario = lblNombreUsuario.Text;
+            cmp.ShowDialog();
+        }
+
+        private void btnCalculadora_Click(object sender, EventArgs e)
+        {
+            Process calc = new Process { StartInfo = { FileName = @"calc.exe" } };
+            calc.Start();
+
+            calc.WaitForExit();
+        }
+
+        private void btnPuntos_Click(object sender, EventArgs e)
+        {
+            PUNTOS pnt = new PUNTOS();
+            pnt.ShowDialog();
+        }
+
+        private void btnPfactura_Click_1(object sender, EventArgs e)
+        {
+            P_FACTURA fac = new P_FACTURA();
+            fac.ShowDialog();
+        }
+
+        private void btnCaja_Click(object sender, EventArgs e)
+        {
+            APERTURA_CAJ AptC = new APERTURA_CAJ();
+            AptC.usuario = lblNombreUsuario.Text;
+            AptC.ShowDialog();
+        }
+
+        private void ValidacionCaja()
+        {
+            cj.Usuario = CodigoUsuario;
+            DT = cj.CargarCaja();
+            if (DT.Rows.Count > 0)
+            {
+                rows = DT.Rows[0];
+                if (rows["TipoOperacion"].ToString() == "Cierre")
+                {
+                    mENSAJE_CONFIRMACION.txtMensaje.Text = "Se debe realizar apertura de caja, deseas realizar apertura de caja ";
+                    mENSAJE_CONFIRMACION.Modulo = "Confirmacion";
+                    mENSAJE_CONFIRMACION.ShowDialog();
+                    if (mENSAJE_CONFIRMACION.Ok)
+                    {
+                        APERTURA_CAJ AptC = new APERTURA_CAJ();
+                        AptC.usuario = lblNombreUsuario.Text;
+                        AptC.ShowDialog();
+                    }
+                }
+            }
+            else
+            {
+                mENSAJE_CONFIRMACION.txtMensaje.Text = "Se debe realizar apertura de caja, deseas realizar apertura de caja ";
+                mENSAJE_CONFIRMACION.Modulo = "Confirmacion";
+                mENSAJE_CONFIRMACION.ShowDialog();
+                if (mENSAJE_CONFIRMACION.Ok)
+                {
+                    APERTURA_CAJ AptC = new APERTURA_CAJ();
+                    AptC.usuario = lblNombreUsuario.Text;
+                    AptC.ShowDialog();
+                }
+            }         
+        }
+
+        private void btnCierreCaja_Click(object sender, EventArgs e)
+        {
+            cj.Usuario = CodigoUsuario;
+            DT = cj.CargarCaja();
+            if (DT.Rows.Count > 0)
+            {
+                rows = DT.Rows[0];
+                if (rows["TipoOperacion"].ToString() == "Apertura")
+                {
+                    Cbi.CodigoUsuario = CodigoUsuario;
+                    Cbi.ShowDialog();
+                }
+                else
+                {
+                    msgError.lblMensaje.Text = "No se ha realizado apertura de caja";
+                    msgError.ShowDialog();
+                }
+            }
+            else
+            {
+                msgError.lblMensaje.Text = "No se ha realizado apertura de caja";
+                msgError.ShowDialog();
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ namespace SBX.CONTROLLER
         string Query = "";
         Boolean ok = true;
         SqlParameter[] Parametros;
+        string WHERE = "";
 
         //getter and setter
         private string Item;
@@ -131,7 +132,7 @@ namespace SBX.CONTROLLER
         {
             DT = null;
 
-            string WHERE = "";
+            WHERE = "";
 
             switch (modulo)
             {
@@ -354,6 +355,37 @@ namespace SBX.CONTROLLER
             Query = "DELETE FROM Producto WHERE Item = '" + Item + "'";
             ok = datos.Eliminar(Query);
             return ok;
+        }
+
+        public DataTable CargarProductosDescuento(string Campo, string Dato)
+        {
+            WHERE = "";
+
+            switch (Campo)
+            {
+                case "Item":
+                    Campo = "p.Item";
+                    break;
+                case "CodigoBarras":
+                    Campo = "c.CodigoBarras";
+                    break;
+                case "Nombre":
+                    Campo = "p.Nombre";
+                    break;
+            }
+
+            if (Campo != "" && Dato != "")
+            {
+                WHERE = " WHERE "+Campo+" LIKE '"+Dato+"%' ";
+            }
+
+            Query = "SELECT p.ID,p.Item, ISNULL(c.CodigoBarras,'') CodigoBarras, p.Nombre FROM Producto p "+
+                    "LEFT JOIN Compras c ON C.CodigoProducto = P.ID "+
+                     WHERE +
+                    "GROUP BY p.ID,p.Item,c.CodigoBarras,p.Nombre " +
+                    "ORDER BY p.Item";
+            DT = datos.Consultar(Query);
+            return DT;
         }
     }
 }

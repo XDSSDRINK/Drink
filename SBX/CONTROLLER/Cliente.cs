@@ -16,6 +16,7 @@ namespace SBX.CONTROLLER
         string Query = "";
         Boolean ok = true;
         SqlParameter[] Parametros;
+        string WHERE = "";
 
         public string Codigo { get; set; }
         public long DNI { get; set; }
@@ -244,7 +245,7 @@ namespace SBX.CONTROLLER
         public DataTable Cargar(string Campo, string Dato, string modulo)
         {
             DT = null;
-            string WHERE = "";
+            
 
             if (modulo == "COMPRAS" || modulo == "Ayuda")
             {
@@ -299,6 +300,21 @@ namespace SBX.CONTROLLER
 
             DT = datos.Consultar(Query);
 
+            return DT;
+        }
+
+        public DataTable CargarActivos(string Buscar)
+        {
+            WHERE = "";
+            if (Buscar.Trim() != "")
+            {
+                WHERE = " AND DNI = "+Buscar;
+            }
+
+            Query = "SELECT * FROM Cliente c "+
+                    "INNER JOIN EstadoCliente Ec ON c.Estado = ec.Codigo "+
+                    "WHERE ec.Estado = 'Activo' "+WHERE;
+            DT = datos.Consultar(Query);
             return DT;
         }
 

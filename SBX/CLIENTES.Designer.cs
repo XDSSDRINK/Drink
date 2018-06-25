@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CLIENTES));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CLIENTES));
             this.pnlArriba = new System.Windows.Forms.Panel();
             this.btnExportaraExcel = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
@@ -67,12 +67,14 @@
             this.ClBanco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClTipoCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClNumeroCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDescuentos = new System.Windows.Forms.Button();
             this.pnlArriba.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlArriba
             // 
+            this.pnlArriba.Controls.Add(this.btnDescuentos);
             this.pnlArriba.Controls.Add(this.btnExportaraExcel);
             this.pnlArriba.Controls.Add(this.txtBuscar);
             this.pnlArriba.Controls.Add(this.btnBuscar);
@@ -137,7 +139,7 @@
             this.btnEliminar.FlatAppearance.BorderSize = 0;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
-            this.btnEliminar.Location = new System.Drawing.Point(97, 11);
+            this.btnEliminar.Location = new System.Drawing.Point(97, 12);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(33, 31);
             this.btnEliminar.TabIndex = 4;
@@ -150,7 +152,7 @@
             this.btnActualizar.FlatAppearance.BorderSize = 0;
             this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnActualizar.Image")));
-            this.btnActualizar.Location = new System.Drawing.Point(58, 11);
+            this.btnActualizar.Location = new System.Drawing.Point(58, 12);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(33, 31);
             this.btnActualizar.TabIndex = 3;
@@ -165,7 +167,7 @@
             this.btnAgregar.FlatAppearance.BorderSize = 0;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
-            this.btnAgregar.Location = new System.Drawing.Point(19, 11);
+            this.btnAgregar.Location = new System.Drawing.Point(19, 12);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(33, 31);
             this.btnAgregar.TabIndex = 2;
@@ -425,6 +427,20 @@
             this.ClNumeroCuenta.Name = "ClNumeroCuenta";
             this.ClNumeroCuenta.ReadOnly = true;
             // 
+            // btnDescuentos
+            // 
+            this.btnDescuentos.BackColor = System.Drawing.SystemColors.Window;
+            this.btnDescuentos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDescuentos.FlatAppearance.BorderSize = 0;
+            this.btnDescuentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDescuentos.Image = ((System.Drawing.Image)(resources.GetObject("btnDescuentos.Image")));
+            this.btnDescuentos.Location = new System.Drawing.Point(175, 12);
+            this.btnDescuentos.Name = "btnDescuentos";
+            this.btnDescuentos.Size = new System.Drawing.Size(33, 31);
+            this.btnDescuentos.TabIndex = 8;
+            this.btnDescuentos.UseVisualStyleBackColor = false;
+            this.btnDescuentos.Click += new System.EventHandler(this.btnDescuentos_Click);
+            // 
             // CLIENTES
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -482,5 +498,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClBanco;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClTipoCuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClNumeroCuenta;
+        private System.Windows.Forms.Button btnDescuentos;
     }
 }

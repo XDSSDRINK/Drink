@@ -16,6 +16,9 @@ namespace SBX
         CONTROLLER.Producto producto = new CONTROLLER.Producto();
         CONTROLLER.Proveedor proveedor = new CONTROLLER.Proveedor();
         CONTROLLER.Persona persona = new CONTROLLER.Persona();
+        CONTROLLER.Ventas ventas = new CONTROLLER.Ventas();
+        CONTROLLER.Cliente clien = new CONTROLLER.Cliente();
+        CONTROLLER.General GNR = new CONTROLLER.General();
 
         //Delegado 
         public delegate void EnviaProducto(string Producto);
@@ -39,6 +42,7 @@ namespace SBX
         int Contador = 0;
         int Filas = 0;
         string Dato = "";
+        bool OK = true;
 
         //// Create a new form.
         Form mdiChildForm = new Form();
@@ -99,8 +103,15 @@ namespace SBX
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
+        private void Limpiar()
+        {
+            txtBuscar.Text = "";
+            dtgAyuda.Rows.Clear();
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
+            Limpiar();
             this.Close();
         }
 
@@ -119,6 +130,16 @@ namespace SBX
                 case "Persona":
                     CargarPersonas();
                     break;
+                case "Venta":
+                    CargarProductosVenta();
+                    break;
+                case "Cliente":
+                    CargarClientes();
+                    break;
+                case "DescuentoProducto":
+                    CargarDescProducto();
+                    break;
+
             }
         }
 
@@ -257,6 +278,36 @@ namespace SBX
                             Contador++;
                         }
                     }
+                }
+            }
+        }
+
+        private void CargarProductosVenta()
+        {
+            dtgAyuda.Rows.Clear();
+            DT = ventas.Cargar_producto(txtBuscar.Text);
+            if (DT.Rows.Count > 0)
+            {
+                dtgAyuda.Columns.Clear();
+                dtgAyuda.Columns.Add("ClItem", "Item");
+                dtgAyuda.Columns.Add("ClCodigoProducto", "Codigo");
+                dtgAyuda.Columns.Add("ClCodigoB", "Codigo Barras");
+                dtgAyuda.Columns.Add("ClNombre", "Nombre");
+                dtgAyuda.Columns.Add("ClReferencia", "Referencia");
+                dtgAyuda.Columns.Add("ClDescripcion", "Descripcion");
+
+                Contador = 0;
+                Filas = DT.Rows.Count;
+                dtgAyuda.Rows.Add(Filas);
+                foreach (DataRow rows in DT.Rows)
+                {
+                    dtgAyuda.Rows[Contador].Cells["ClCodigoProducto"].Value = rows["CodigoProducto"].ToString();
+                    dtgAyuda.Rows[Contador].Cells["ClItem"].Value = rows["Item"].ToString();
+                    dtgAyuda.Rows[Contador].Cells["ClCodigoB"].Value = rows["CodigoBarras"].ToString();
+                    dtgAyuda.Rows[Contador].Cells["ClNombre"].Value = rows["Nombre"].ToString();
+                    dtgAyuda.Rows[Contador].Cells["ClReferencia"].Value = rows["Referencia"].ToString();
+                    dtgAyuda.Rows[Contador].Cells["ClDescripcion"].Value = rows["Descripcion"].ToString();
+                    Contador++;
                 }
             }
         }
@@ -566,6 +617,56 @@ namespace SBX
             }
         }
 
+        private void CargarClientes()
+        {
+                errorProvider1.Clear();
+                dtgAyuda.Rows.Clear();
+
+            if (txtBuscar.Text.Trim() != "")
+            {
+                OK = GNR.IsNumericDouble(txtBuscar.Text);
+                if (OK)
+                {
+                    DT = clien.CargarActivos(txtBuscar.Text);
+                }
+                else
+                {
+                    errorProvider1.SetError(txtBuscar, "DNI debe ser un valor numerico");
+                }
+            }
+            else
+            {
+                DT = clien.CargarActivos(txtBuscar.Text);
+            }
+
+            if (DT.Rows.Count > 0)
+            {
+                dtgAyuda.Columns.Clear();
+                dtgAyuda.Columns.Add("ClDNI", "DNI");
+                dtgAyuda.Columns.Add("CLDgv", "Dg V");
+                dtgAyuda.Columns.Add("ClTipoIdenti", "Tipo identificacion");
+                dtgAyuda.Columns.Add("ClTipoPer", "Tipo persona");
+                dtgAyuda.Columns.Add("ClRazonSo", "Razon social");
+                dtgAyuda.Columns.Add("ClNombreCom", "Nombre comercial");
+
+                Contador = 0;
+                Filas = DT.Rows.Count;
+                dtgAyuda.Rows.Add(Filas);
+                foreach (DataRow rows in DT.Rows)
+                {
+                    dtgAyuda.Rows[Contador].Cells["ClDNI"].Value = rows["DNI"].ToString();
+                    dtgAyuda.Rows[Contador].Cells["CLDgv"].Value = rows["DigitoVerificacion"].ToString();
+                    dtgAyuda.Rows[Contador].Cells["ClTipoIdenti"].Value = rows["TipoIdentificacion"].ToString();
+                    dtgAyuda.Rows[Contador].Cells["ClTipoPer"].Value = rows["TipoPersona"].ToString();
+                    dtgAyuda.Rows[Contador].Cells["ClRazonSo"].Value = rows["RazonSocial"].ToString();
+                    dtgAyuda.Rows[Contador].Cells["ClNombreCom"].Value = rows["NombreComercial"].ToString();
+                    Contador++;
+                }
+            }
+
+            DT.Clear();
+        }
+
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
             CargarInformacion();
@@ -592,9 +693,98 @@ namespace SBX
                 case "Persona":
                     EnviaPersonas(Dato);
                     break;
+                case "Venta":
+                    EnviaProductos(Dato);
+                    break;
+                case "Cliente":
+                    EnviaPersonas(Dato);
+                    break;
+                case "DescuentoProducto":
+                    EnviaProductos(Dato);
+                    break;
             }
-
+            Limpiar();
             this.Close();
+        }
+
+        private void CargarDescProducto()
+        {
+            errorProvider1.Clear();
+            dtgAyuda.Rows.Clear();
+
+            DT = producto.CargarProductosDescuento("Item", txtBuscar.Text);
+            if (DT.Rows.Count > 0)
+            {
+                dtgAyuda.Columns.Clear();
+
+                dtgAyuda.Columns.Add("ClItem", "Item");
+                dtgAyuda.Columns.Add("ClCodigoBarras", "Codigo barras");
+                dtgAyuda.Columns.Add("ClNombre", "Nombre");
+
+                Contador = 0;
+                Filas = DT.Rows.Count;
+                dtgAyuda.Rows.Add(Filas);
+                foreach (DataRow rows in DT.Rows)
+                {
+                    dtgAyuda.Rows[Contador].Cells["ClItem"].Value = rows["Item"].ToString();
+                    dtgAyuda.Rows[Contador].Cells["ClCodigoBarras"].Value = rows["CodigoBarras"].ToString();
+                    dtgAyuda.Rows[Contador].Cells["ClNombre"].Value = rows["Nombre"].ToString();               
+                    
+                    Contador++;
+                }
+            }
+            else
+            {
+                DT = producto.CargarProductosDescuento("CodigoBarras", txtBuscar.Text);
+                if (DT.Rows.Count > 0)
+                {
+                    dtgAyuda.Columns.Clear();
+
+                    dtgAyuda.Columns.Add("ClItem", "Item");
+                    dtgAyuda.Columns.Add("ClCodigoBarras", "Codigo barras");
+                    dtgAyuda.Columns.Add("ClNombre", "Nombre");
+
+                    Contador = 0;
+                    Filas = DT.Rows.Count;
+                    dtgAyuda.Rows.Add(Filas);
+                    foreach (DataRow rows in DT.Rows)
+                    {
+                        dtgAyuda.Rows[Contador].Cells["ClItem"].Value = rows["Item"].ToString();
+                        dtgAyuda.Rows[Contador].Cells["ClCodigoBarras"].Value = rows["CodigoBarras"].ToString();
+                        dtgAyuda.Rows[Contador].Cells["ClNombre"].Value = rows["Nombre"].ToString();
+
+                        Contador++;
+                    }
+                }
+                else
+                {
+                    DT = producto.CargarProductosDescuento("Nombre", txtBuscar.Text);
+                    if (DT.Rows.Count > 0)
+                    {
+                        dtgAyuda.Columns.Clear();
+
+                        dtgAyuda.Columns.Add("ClItem", "Item");
+                        dtgAyuda.Columns.Add("ClCodigoBarras", "Codigo barras");
+                        dtgAyuda.Columns.Add("ClNombre", "Nombre");
+
+                        Contador = 0;
+                        Filas = DT.Rows.Count;
+                        dtgAyuda.Rows.Add(Filas);
+                        foreach (DataRow rows in DT.Rows)
+                        {
+                            dtgAyuda.Rows[Contador].Cells["ClItem"].Value = rows["Item"].ToString();
+                            dtgAyuda.Rows[Contador].Cells["ClCodigoBarras"].Value = rows["CodigoBarras"].ToString();
+                            dtgAyuda.Rows[Contador].Cells["ClNombre"].Value = rows["Nombre"].ToString();
+
+                            Contador++;
+                        }
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(txtBuscar,"Ingrese Item o Codigo de barras o Nombre");
+                    }
+                }
+            }
         }
     }
 }

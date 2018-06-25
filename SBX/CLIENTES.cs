@@ -15,12 +15,14 @@ namespace SBX
         CONTROLLER.Cliente cliente = new CONTROLLER.Cliente();
         DETALLE_CLIENTES dETALLE_CLIENTES = new DETALLE_CLIENTES();
         CARGANDO cARGANDO = new CARGANDO();
+        DESCUENTO_CLIENTE dESCUENTOcLIENTE = new DESCUENTO_CLIENTE();
 
         public string NombreUsuario { get; set; }
         bool AutorizaModificar = false;
         DataTable DT;
         int contador = 0;
         int Filas = 0;
+        string DNI = "";
 
         public CLIENTES()
         {
@@ -101,7 +103,7 @@ namespace SBX
             {
                 foreach (DataRow permisos in DT.Rows)
                 {
-                    switch (permisos["Nombre"])
+                    switch (permisos["Nombre"].ToString())
                     {
                         case "CREATE":
                             btnAgregar.Enabled = true;
@@ -409,6 +411,15 @@ namespace SBX
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             cargarClientes();
+        }
+
+        private void btnDescuentos_Click(object sender, EventArgs e)
+        {
+            Filas = dtgClientes.CurrentRow.Index;
+            DNI = dtgClientes.Rows[Filas].Cells["ClDNI"].Value.ToString();
+            dESCUENTOcLIENTE.lblCliente.Text = DNI; 
+            dESCUENTOcLIENTE.lblNombre.Text = dtgClientes.Rows[Filas].Cells["ClRazonSocial"].Value.ToString();
+            dESCUENTOcLIENTE.ShowDialog();
         }
     }
 }

@@ -421,7 +421,7 @@ namespace SBX
             {
                 foreach (DataRow permisos in DT.Rows)
                 {
-                    switch (permisos["Nombre"])
+                    switch (permisos["Nombre"].ToString())
                     {
                         case "CREATE":
                             btnAgregar.Enabled = true;

@@ -118,6 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnCalculadora.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJ
+        TUUH4gYIEikzOZhEhQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE4SURBVEhL
+        zZY9SgNRFIWn0SqF4A5MZxV1C5FkA2oKOxsrNyAEsXIZLkBRyDJSBZuA2AtJIShoE1/O9+4dJ1XM/JEc
+        +Jhz7uW+S3gMkyRVCGFHvIqyehO7fmwmFTuxXY06fmwmFbvWC1PRKgizqOvHZqJovfDupdxi1o5Y84Iv
+        cVcQZtHSBVVo6YJvcV8QZtH/d6BnW1yKC7El9jwDnho9cttnVr9kPWcWo07Eg9koPLVUM5/JtWBRPfFs
+        NgpP7U8+k2vBSPyIT3Ekbj0Dnho98shnNuM9SH/BUHyIiTgUfc+Ap0aPPPSZzbqDX4tRp+LRbBS+9IJj
+        kb4H26LpGfClF5yLG3EtGuLAM+BLL1jUmXgyG4WvdAGHVX7JAzEWL2JfXHkGPDV65IHPrLSgtk9m7R/9
+        Gv62JMkc2LT9EQkQK2MAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="btnAnularVenta.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
@@ -230,13 +243,13 @@
   <metadata name="ClValorUnidad.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="ClValorTotal.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="ClDescuento.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="ClValorDesc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ClValorTotal.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="ClIva.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

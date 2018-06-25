@@ -15,7 +15,8 @@ namespace SBX.CONTROLLER
         string Query = "";
         DataTable DT;
         Boolean ok = true;
-        SqlParameter[] Parametros;
+        //SqlParameter[] Parametros;
+        string where = "";
 
         public int ID { get; set; }
         public int IdCompra { get; set; }
@@ -26,6 +27,21 @@ namespace SBX.CONTROLLER
         public string Modulo { get; set; }
 
         public int CodigoUsuario { get; set; }
+        public string Item { get; set; }
+
+        public DataTable Cargar(bool Todos)
+        {
+            where = "";
+            if (Todos == false)
+            {
+                where = Item;
+            }
+
+            Query = "EXECUTE ReporteKardex '" + where + "'";
+
+            DT = datos.Consultar(Query);
+            return DT;
+        }
 
         public DataTable CargarKardex(Boolean Todos)
         {

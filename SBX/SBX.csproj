@@ -35,10 +35,9 @@
     <ApplicationIcon>SBX.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.Office.Interop.Excel">
+      <HintPath>..\..\..\DLL\microsoft.office.interop.excel\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>C:\Users\ruben\Desktop\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Grid.Base, Version=15.2460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
@@ -63,6 +62,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APERTURA_CAJA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="APERTURA_CAJA.Designer.cs">
+      <DependentUpon>APERTURA_CAJA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AUTORIZACION.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AUTORIZACION.Designer.cs">
+      <DependentUpon>AUTORIZACION.cs</DependentUpon>
+    </Compile>
     <Compile Include="AYUDA.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,11 +92,35 @@
     <Compile Include="CARGANDO.Designer.cs">
       <DependentUpon>CARGANDO.cs</DependentUpon>
     </Compile>
+    <Compile Include="CIERRE_BAUCHER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CIERRE_BAUCHER.Designer.cs">
+      <DependentUpon>CIERRE_BAUCHER.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CIERRE_BILLETES.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CIERRE_BILLETES.Designer.cs">
+      <DependentUpon>CIERRE_BILLETES.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CIERRE_MONEDAS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CIERRE_MONEDAS.Designer.cs">
+      <DependentUpon>CIERRE_MONEDAS.cs</DependentUpon>
+    </Compile>
     <Compile Include="CLIENTES.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CLIENTES.Designer.cs">
       <DependentUpon>CLIENTES.cs</DependentUpon>
+    </Compile>
+    <Compile Include="COMPANIA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="COMPANIA.Designer.cs">
+      <DependentUpon>COMPANIA.cs</DependentUpon>
     </Compile>
     <Compile Include="COMPRAS.cs">
       <SubType>Form</SubType>
@@ -95,13 +130,19 @@
     </Compile>
     <Compile Include="CONTROLLER\Banco.cs" />
     <Compile Include="CONTROLLER\Bodega.cs" />
+    <Compile Include="CONTROLLER\Caja.cs" />
     <Compile Include="CONTROLLER\Categoria.cs" />
     <Compile Include="CONTROLLER\Cliente.cs" />
+    <Compile Include="CONTROLLER\Compania.cs" />
     <Compile Include="CONTROLLER\Compras.cs" />
+    <Compile Include="CONTROLLER\CONFG_PUNTOS.cs" />
     <Compile Include="CONTROLLER\Departamento.cs" />
+    <Compile Include="CONTROLLER\DescuentoCliente.cs" />
     <Compile Include="CONTROLLER\Estado.cs" />
     <Compile Include="CONTROLLER\EstadoCliente.cs" />
+    <Compile Include="CONTROLLER\EstadoGlobal.cs" />
     <Compile Include="CONTROLLER\EstadoProveedor.cs" />
+    <Compile Include="CONTROLLER\Factura.cs" />
     <Compile Include="CONTROLLER\General.cs" />
     <Compile Include="CONTROLLER\Inventario.cs" />
     <Compile Include="CONTROLLER\kardex.cs" />
@@ -115,12 +156,20 @@
     <Compile Include="CONTROLLER\Presentacion.cs" />
     <Compile Include="CONTROLLER\Producto.cs" />
     <Compile Include="CONTROLLER\Proveedor.cs" />
+    <Compile Include="CONTROLLER\Regimen.cs" />
     <Compile Include="CONTROLLER\Rol.cs" />
     <Compile Include="CONTROLLER\Rol_Permiso.cs" />
     <Compile Include="CONTROLLER\TipoCuenta.cs" />
     <Compile Include="CONTROLLER\UnidadMedida.cs" />
     <Compile Include="CONTROLLER\Usuario.cs" />
+    <Compile Include="CONTROLLER\VentaAnulada.cs" />
     <Compile Include="CONTROLLER\Ventas.cs" />
+    <Compile Include="DESCUENTO_CLIENTE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DESCUENTO_CLIENTE.Designer.cs">
+      <DependentUpon>DESCUENTO_CLIENTE.cs</DependentUpon>
+    </Compile>
     <Compile Include="DETALLE_CLIENTES.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +217,18 @@
     </Compile>
     <Compile Include="DETALLE_USUARIOS.Designer.cs">
       <DependentUpon>DETALLE_USUARIOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IMPORTAR_EXCEL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IMPORTAR_EXCEL.Designer.cs">
+      <DependentUpon>IMPORTAR_EXCEL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="INFORME_CIERRE_CAJA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="INFORME_CIERRE_CAJA.Designer.cs">
+      <DependentUpon>INFORME_CIERRE_CAJA.cs</DependentUpon>
     </Compile>
     <Compile Include="INICIO.cs">
       <SubType>Form</SubType>
@@ -239,6 +300,18 @@
     <Compile Include="PROVEEDORES.Designer.cs">
       <DependentUpon>PROVEEDORES.cs</DependentUpon>
     </Compile>
+    <Compile Include="PUNTOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PUNTOS.Designer.cs">
+      <DependentUpon>PUNTOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_FACTURA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_FACTURA.Designer.cs">
+      <DependentUpon>P_FACTURA.cs</DependentUpon>
+    </Compile>
     <Compile Include="REGISTRO_COMPRAS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +342,12 @@
     <Compile Include="VENTAS.Designer.cs">
       <DependentUpon>VENTAS.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="APERTURA_CAJA.resx">
+      <DependentUpon>APERTURA_CAJA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AUTORIZACION.resx">
+      <DependentUpon>AUTORIZACION.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AYUDA.resx">
       <DependentUpon>AYUDA.cs</DependentUpon>
     </EmbeddedResource>
@@ -278,11 +357,26 @@
     <EmbeddedResource Include="CARGANDO.resx">
       <DependentUpon>CARGANDO.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CIERRE_BAUCHER.resx">
+      <DependentUpon>CIERRE_BAUCHER.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CIERRE_BILLETES.resx">
+      <DependentUpon>CIERRE_BILLETES.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CIERRE_MONEDAS.resx">
+      <DependentUpon>CIERRE_MONEDAS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CLIENTES.resx">
       <DependentUpon>CLIENTES.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="COMPANIA.resx">
+      <DependentUpon>COMPANIA.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="COMPRAS.resx">
       <DependentUpon>COMPRAS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DESCUENTO_CLIENTE.resx">
+      <DependentUpon>DESCUENTO_CLIENTE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DETALLE_CLIENTES.resx">
       <DependentUpon>DETALLE_CLIENTES.cs</DependentUpon>
@@ -307,6 +401,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DETALLE_USUARIOS.resx">
       <DependentUpon>DETALLE_USUARIOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IMPORTAR_EXCEL.resx">
+      <DependentUpon>IMPORTAR_EXCEL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="INFORME_CIERRE_CAJA.resx">
+      <DependentUpon>INFORME_CIERRE_CAJA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="INICIO.resx">
       <DependentUpon>INICIO.cs</DependentUpon>
@@ -349,6 +449,12 @@
     </Compile>
     <EmbeddedResource Include="PROVEEDORES.resx">
       <DependentUpon>PROVEEDORES.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PUNTOS.resx">
+      <DependentUpon>PUNTOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_FACTURA.resx">
+      <DependentUpon>P_FACTURA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="REGISTRO_COMPRAS.resx">
       <DependentUpon>REGISTRO_COMPRAS.cs</DependentUpon>

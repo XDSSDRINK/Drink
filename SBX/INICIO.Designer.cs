@@ -44,6 +44,10 @@
             this.btnReporteVentas = new System.Windows.Forms.Button();
             this.btnReporteGananciasYperdidas = new System.Windows.Forms.Button();
             this.pnlParametros = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.btnCaja = new System.Windows.Forms.Button();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.btnPuntos = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnPRol_permiso = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -64,6 +68,7 @@
             this.btnCompras = new System.Windows.Forms.Button();
             this.btnVentas = new System.Windows.Forms.Button();
             this.pnlArriba = new System.Windows.Forms.Panel();
+            this.btnCalculadora = new System.Windows.Forms.PictureBox();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.lblFormulario = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -74,12 +79,15 @@
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.pnlCentral = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.btnCierreCaja = new System.Windows.Forms.Button();
             this.pnlIzquierda.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlSubmenuReportes.SuspendLayout();
             this.pnlParametros.SuspendLayout();
             this.pnlArriba.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCalculadora)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNotificacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
@@ -134,7 +142,7 @@
             // 
             // btnInventario
             // 
-            this.btnInventario.BackColor = System.Drawing.Color.DimGray;
+            this.btnInventario.BackColor = System.Drawing.Color.SeaGreen;
             this.btnInventario.FlatAppearance.BorderSize = 0;
             this.btnInventario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -160,12 +168,13 @@
             this.btnCompania.ForeColor = System.Drawing.SystemColors.Window;
             this.btnCompania.Image = ((System.Drawing.Image)(resources.GetObject("btnCompania.Image")));
             this.btnCompania.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCompania.Location = new System.Drawing.Point(3, 713);
+            this.btnCompania.Location = new System.Drawing.Point(3, 840);
             this.btnCompania.Name = "btnCompania";
             this.btnCompania.Size = new System.Drawing.Size(184, 40);
             this.btnCompania.TabIndex = 16;
             this.btnCompania.Text = "Compañia";
             this.btnCompania.UseVisualStyleBackColor = true;
+            this.btnCompania.Click += new System.EventHandler(this.btnCompania_Click);
             // 
             // pnlSubmenuReportes
             // 
@@ -177,9 +186,9 @@
             this.pnlSubmenuReportes.Controls.Add(this.btnReporteCompras);
             this.pnlSubmenuReportes.Controls.Add(this.btnReporteVentas);
             this.pnlSubmenuReportes.Controls.Add(this.btnReporteGananciasYperdidas);
-            this.pnlSubmenuReportes.Location = new System.Drawing.Point(7, 804);
+            this.pnlSubmenuReportes.Location = new System.Drawing.Point(7, 933);
             this.pnlSubmenuReportes.Name = "pnlSubmenuReportes";
-            this.pnlSubmenuReportes.Size = new System.Drawing.Size(170, 159);
+            this.pnlSubmenuReportes.Size = new System.Drawing.Size(170, 153);
             this.pnlSubmenuReportes.TabIndex = 15;
             // 
             // panel5
@@ -272,7 +281,7 @@
             this.btnReporteGananciasYperdidas.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReporteGananciasYperdidas.ForeColor = System.Drawing.SystemColors.Window;
             this.btnReporteGananciasYperdidas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReporteGananciasYperdidas.Location = new System.Drawing.Point(17, 3);
+            this.btnReporteGananciasYperdidas.Location = new System.Drawing.Point(17, 45);
             this.btnReporteGananciasYperdidas.Name = "btnReporteGananciasYperdidas";
             this.btnReporteGananciasYperdidas.Size = new System.Drawing.Size(149, 33);
             this.btnReporteGananciasYperdidas.TabIndex = 10;
@@ -281,6 +290,12 @@
             // 
             // pnlParametros
             // 
+            this.pnlParametros.Controls.Add(this.panel13);
+            this.pnlParametros.Controls.Add(this.btnCierreCaja);
+            this.pnlParametros.Controls.Add(this.panel12);
+            this.pnlParametros.Controls.Add(this.btnCaja);
+            this.pnlParametros.Controls.Add(this.panel11);
+            this.pnlParametros.Controls.Add(this.btnPuntos);
             this.pnlParametros.Controls.Add(this.panel1);
             this.pnlParametros.Controls.Add(this.btnPRol_permiso);
             this.pnlParametros.Controls.Add(this.panel6);
@@ -293,8 +308,56 @@
             this.pnlParametros.Controls.Add(this.btnPproducto);
             this.pnlParametros.Location = new System.Drawing.Point(7, 465);
             this.pnlParametros.Name = "pnlParametros";
-            this.pnlParametros.Size = new System.Drawing.Size(170, 196);
+            this.pnlParametros.Size = new System.Drawing.Size(170, 313);
             this.pnlParametros.TabIndex = 13;
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.SystemColors.Window;
+            this.panel12.Location = new System.Drawing.Point(3, 237);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(10, 33);
+            this.panel12.TabIndex = 23;
+            // 
+            // btnCaja
+            // 
+            this.btnCaja.FlatAppearance.BorderSize = 0;
+            this.btnCaja.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCaja.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCaja.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCaja.Location = new System.Drawing.Point(17, 237);
+            this.btnCaja.Name = "btnCaja";
+            this.btnCaja.Size = new System.Drawing.Size(149, 33);
+            this.btnCaja.TabIndex = 22;
+            this.btnCaja.Text = "Apertura Caja";
+            this.btnCaja.UseVisualStyleBackColor = true;
+            this.btnCaja.Click += new System.EventHandler(this.btnCaja_Click);
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.SystemColors.Window;
+            this.panel11.Location = new System.Drawing.Point(3, 198);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(10, 33);
+            this.panel11.TabIndex = 21;
+            // 
+            // btnPuntos
+            // 
+            this.btnPuntos.FlatAppearance.BorderSize = 0;
+            this.btnPuntos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnPuntos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPuntos.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPuntos.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnPuntos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPuntos.Location = new System.Drawing.Point(17, 198);
+            this.btnPuntos.Name = "btnPuntos";
+            this.btnPuntos.Size = new System.Drawing.Size(149, 33);
+            this.btnPuntos.TabIndex = 20;
+            this.btnPuntos.Text = "Puntos";
+            this.btnPuntos.UseVisualStyleBackColor = true;
+            this.btnPuntos.Click += new System.EventHandler(this.btnPuntos_Click);
             // 
             // panel1
             // 
@@ -400,6 +463,7 @@
             this.btnPfactura.TabIndex = 11;
             this.btnPfactura.Text = "Factura";
             this.btnPfactura.UseVisualStyleBackColor = true;
+            this.btnPfactura.Click += new System.EventHandler(this.btnPfactura_Click_1);
             // 
             // btnPproducto
             // 
@@ -428,7 +492,7 @@
             this.btnReportes.ForeColor = System.Drawing.Color.White;
             this.btnReportes.Image = ((System.Drawing.Image)(resources.GetObject("btnReportes.Image")));
             this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportes.Location = new System.Drawing.Point(0, 764);
+            this.btnReportes.Location = new System.Drawing.Point(0, 890);
             this.btnReportes.Name = "btnReportes";
             this.btnReportes.Size = new System.Drawing.Size(189, 40);
             this.btnReportes.TabIndex = 9;
@@ -446,7 +510,7 @@
             this.btnPersonal.ForeColor = System.Drawing.SystemColors.Window;
             this.btnPersonal.Image = ((System.Drawing.Image)(resources.GetObject("btnPersonal.Image")));
             this.btnPersonal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPersonal.Location = new System.Drawing.Point(3, 667);
+            this.btnPersonal.Location = new System.Drawing.Point(3, 794);
             this.btnPersonal.Name = "btnPersonal";
             this.btnPersonal.Size = new System.Drawing.Size(184, 40);
             this.btnPersonal.TabIndex = 8;
@@ -584,6 +648,7 @@
             // 
             this.pnlArriba.BackColor = System.Drawing.Color.DimGray;
             this.pnlArriba.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlArriba.Controls.Add(this.btnCalculadora);
             this.pnlArriba.Controls.Add(this.lblNombreUsuario);
             this.pnlArriba.Controls.Add(this.lblFormulario);
             this.pnlArriba.Controls.Add(this.pictureBox2);
@@ -599,6 +664,19 @@
             this.pnlArriba.Size = new System.Drawing.Size(1042, 36);
             this.pnlArriba.TabIndex = 1;
             this.pnlArriba.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlArriba_MouseDown);
+            // 
+            // btnCalculadora
+            // 
+            this.btnCalculadora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCalculadora.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCalculadora.Image = ((System.Drawing.Image)(resources.GetObject("btnCalculadora.Image")));
+            this.btnCalculadora.Location = new System.Drawing.Point(810, 3);
+            this.btnCalculadora.Name = "btnCalculadora";
+            this.btnCalculadora.Size = new System.Drawing.Size(24, 24);
+            this.btnCalculadora.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnCalculadora.TabIndex = 8;
+            this.btnCalculadora.TabStop = false;
+            this.btnCalculadora.Click += new System.EventHandler(this.btnCalculadora_Click);
             // 
             // lblNombreUsuario
             // 
@@ -719,6 +797,30 @@
             this.pnlCentral.Size = new System.Drawing.Size(833, 657);
             this.pnlCentral.TabIndex = 2;
             // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.SystemColors.Window;
+            this.panel13.Location = new System.Drawing.Point(3, 276);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(10, 33);
+            this.panel13.TabIndex = 25;
+            // 
+            // btnCierreCaja
+            // 
+            this.btnCierreCaja.FlatAppearance.BorderSize = 0;
+            this.btnCierreCaja.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnCierreCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCierreCaja.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCierreCaja.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnCierreCaja.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCierreCaja.Location = new System.Drawing.Point(17, 276);
+            this.btnCierreCaja.Name = "btnCierreCaja";
+            this.btnCierreCaja.Size = new System.Drawing.Size(149, 33);
+            this.btnCierreCaja.TabIndex = 24;
+            this.btnCierreCaja.Text = "Cierre Caja";
+            this.btnCierreCaja.UseVisualStyleBackColor = true;
+            this.btnCierreCaja.Click += new System.EventHandler(this.btnCierreCaja_Click);
+            // 
             // INICIO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -741,6 +843,7 @@
             this.pnlParametros.ResumeLayout(false);
             this.pnlArriba.ResumeLayout(false);
             this.pnlArriba.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCalculadora)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNotificacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
@@ -798,5 +901,12 @@
         public System.Windows.Forms.Button btnInventario;
         private System.Windows.Forms.Panel panel10;
         public System.Windows.Forms.Label lblFormulario;
+        private System.Windows.Forms.PictureBox btnCalculadora;
+        private System.Windows.Forms.Panel panel11;
+        public System.Windows.Forms.Button btnPuntos;
+        private System.Windows.Forms.Panel panel12;
+        public System.Windows.Forms.Button btnCaja;
+        private System.Windows.Forms.Panel panel13;
+        public System.Windows.Forms.Button btnCierreCaja;
     }
 }

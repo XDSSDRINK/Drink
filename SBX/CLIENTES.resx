@@ -118,6 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnDescuentos.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJ
+        TUUH4gYSDzkPd2+tiwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEKSURBVDhP
+        jZKtbgJBFIU3VVUIHK48A+ERSGobZA0h8ADYZf9eAIPuI1BdiwccHkVQKAyCpv3uzR0yu2GXOcnJ3Dtn
+        zsn8RU2I47iTZdlURumLonihH6gYAhZv4FpG6fM8X1CvVAyBH5Cm6Zhxzy5aJj+HOwL8gMckSbomhUNM
+        YraQ+30EQbaLaW/bL91HEFi8kouz+nEA6SOhtSWweChPJ3X1Se9g8k9odeHzUTCBr2hLeIKzaoDWHrfq
+        MmB+Y27n6aemgBv8VCfA/E5/9nThvC7gAr+gO8o34y90+pW5iSa7yUpAEw+Ye2oWOMGv64jxh6O01ejg
+        RKtLr+CIMYZ9NVSBUPsPniOK/gGH/hpoTcmi5wAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnExportaraExcel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6

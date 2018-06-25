@@ -74,6 +74,40 @@ namespace SBX.MODEL
            
             return ok;
         }
+
+        public Boolean EliminarConParametros(SqlParameter[] Parametros, string query)
+        {
+            QUERY = query;
+            cn.Cadenacn.Open();
+            SC = new SqlCommand(QUERY, cn.Cadenacn);
+            contador = 0;
+
+            while (contador < Parametros.Length)
+            {
+                //// Creando los parámetros necesarios
+                SC.Parameters.Add(Parametros[contador].ParameterName, Parametros[contador].SqlDbType);
+
+                //// Asignando los valores a los atributos
+                SC.Parameters[Parametros[contador].ParameterName].Value = Parametros[contador].Value;
+
+                contador++;
+            }
+
+            try
+            {
+                SC.ExecuteNonQuery();
+                cn.Cadenacn.Close();
+                ok = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al intentar Eliminar: " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ok = false;
+            }
+
+            return ok;
+        }
+
         #endregion
         #region Update
         public Boolean Modificar(SqlParameter[] Parametros, string query)
