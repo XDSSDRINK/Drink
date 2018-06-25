@@ -1,0 +1,8 @@
+CREATE PROCEDURE SP_VERIFICACION_ROL_PERMISO_VENTA
+@Usuario AS VARCHAR(15)
+AS
+DECLARE 
+@Rol AS INT
+SET @Rol = (SELECT Rol FROM Usuario WHERE Usuario = @Usuario)
+
+SELECT * FROM Rol_Permiso WHERE Rol = @Rol AND (Permiso = 5 AND Modulo = 4)

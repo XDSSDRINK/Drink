@@ -1,0 +1,23 @@
+CREATE TABLE Venta(
+ID int IDENTITY(1,1) PRIMARY KEY,
+CodigoProducto int,
+CodigoBarras varchar(100),
+IVA float,
+CodigoCliente int,
+Puntos float,
+Documento varchar(20),
+NombreDocumento varchar(20),
+ConsecutivoDocumento varchar(20),
+Cantidad Float,
+Costo money,
+Margen float,
+Descuento float,
+MedioPago varchar(10),
+CodigoUsuario int,
+Efectivo money,
+FechaRegistro date,
+HoraRegistro datetime,
+foreign key(CodigoProducto) references producto(ID),
+foreign key(CodigoCliente) references Cliente(Codigo),
+foreign key(CodigoUsuario) references Usuario(Codigo)
+)

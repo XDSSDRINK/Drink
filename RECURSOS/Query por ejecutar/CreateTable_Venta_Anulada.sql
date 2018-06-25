@@ -1,0 +1,10 @@
+CREATE TABLE VentaAnulada(
+ID INT IDENTITY(1,1) PRIMARY KEY,
+Item VARCHAR(15),
+CodBarras VARCHAR(100),
+Cantidad FLOAT,
+PrecioUN MONEY,
+Descuento FLOAT,
+Usuario VARCHAR(20),
+FechaRegistro DATETIME
+)

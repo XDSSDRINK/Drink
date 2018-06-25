@@ -1,0 +1,4 @@
+CREATE TABLE EstadoCliente(
+Codigo INT IDENTITY(1,1) PRIMARY KEY,
+Estado VARCHAR(30)
+)

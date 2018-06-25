@@ -1,0 +1,9 @@
+CREATE TABLE Estado 
+(
+ID INT IDENTITY(1,1) PRIMARY KEY,
+Nombre VARCHAR(15)
+)
+GO 
+INSERT INTO Estado
+VALUES('Activo'),
+('Inactivo')
