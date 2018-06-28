@@ -161,7 +161,7 @@ namespace SBX
                         compras.Lote = DatosCompra.Cells["CLLote"].Value.ToString();
                         compras.Serial = DatosCompra.Cells["ClSerial"].Value.ToString();
                         compras.CodigoBarras = DatosCompra.Cells["ClCodigoBarras"].Value.ToString();
-                        compras.FechaRegistro = DateTime.Today;
+                        compras.FechaRegistro = DateTime.Now;
                         compras.HoraRegistro = DateTime.Now;
                         compras.FechaVencimiento = Convert.ToDateTime(DatosCompra.Cells["ClFechaVence"].Value);
                         //consulta id bodega

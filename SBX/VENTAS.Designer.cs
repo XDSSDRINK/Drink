@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VENTAS));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlArriba = new System.Windows.Forms.Panel();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -85,11 +85,11 @@
             // 
             this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.ForeColor = System.Drawing.Color.Gray;
             this.txtBuscar.Location = new System.Drawing.Point(419, 15);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(195, 21);
+            this.txtBuscar.Size = new System.Drawing.Size(195, 20);
             this.txtBuscar.TabIndex = 6;
             this.txtBuscar.Text = "Buscar Item";
             this.txtBuscar.Enter += new System.EventHandler(this.txtBuscar_Enter);
@@ -170,10 +170,10 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(483, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 16);
+            this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 13;
             this.label2.Text = "Fecha Fin.";
             // 
@@ -181,42 +181,42 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(299, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 16);
+            this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Fecha InI.";
             // 
             // dtpkFechaFinal
             // 
             this.dtpkFechaFinal.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dtpkFechaFinal.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpkFechaFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpkFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpkFechaFinal.Location = new System.Drawing.Point(546, 6);
             this.dtpkFechaFinal.Name = "dtpkFechaFinal";
-            this.dtpkFechaFinal.Size = new System.Drawing.Size(114, 21);
+            this.dtpkFechaFinal.Size = new System.Drawing.Size(114, 20);
             this.dtpkFechaFinal.TabIndex = 11;
             // 
             // dtpkFechaIni
             // 
             this.dtpkFechaIni.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dtpkFechaIni.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpkFechaIni.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpkFechaIni.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpkFechaIni.Location = new System.Drawing.Point(363, 6);
             this.dtpkFechaIni.Name = "dtpkFechaIni";
-            this.dtpkFechaIni.Size = new System.Drawing.Size(114, 21);
+            this.dtpkFechaIni.Size = new System.Drawing.Size(114, 20);
             this.dtpkFechaIni.TabIndex = 10;
             // 
             // txtConsecutivoDoc
             // 
             this.txtConsecutivoDoc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtConsecutivoDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtConsecutivoDoc.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConsecutivoDoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConsecutivoDoc.ForeColor = System.Drawing.Color.Gray;
             this.txtConsecutivoDoc.Location = new System.Drawing.Point(153, 6);
             this.txtConsecutivoDoc.Name = "txtConsecutivoDoc";
-            this.txtConsecutivoDoc.Size = new System.Drawing.Size(126, 21);
+            this.txtConsecutivoDoc.Size = new System.Drawing.Size(126, 20);
             this.txtConsecutivoDoc.TabIndex = 9;
             this.txtConsecutivoDoc.Text = "Consecutivo Doc";
             this.txtConsecutivoDoc.Enter += new System.EventHandler(this.txtConsecutivoDoc_Enter);
@@ -227,11 +227,11 @@
             // 
             this.txtNombreDoc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtNombreDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNombreDoc.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreDoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreDoc.ForeColor = System.Drawing.Color.Gray;
             this.txtNombreDoc.Location = new System.Drawing.Point(67, 6);
             this.txtNombreDoc.Name = "txtNombreDoc";
-            this.txtNombreDoc.Size = new System.Drawing.Size(80, 21);
+            this.txtNombreDoc.Size = new System.Drawing.Size(80, 20);
             this.txtNombreDoc.TabIndex = 8;
             this.txtNombreDoc.Text = "Nombre Doc";
             this.txtNombreDoc.Enter += new System.EventHandler(this.txtNombreDoc_Enter);
@@ -243,22 +243,22 @@
             this.dtgVentas.AllowUserToAddRows = false;
             this.dtgVentas.AllowUserToDeleteRows = false;
             this.dtgVentas.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle37.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle37.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
-            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtgVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgVentas.BackgroundColor = System.Drawing.Color.White;
             this.dtgVentas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgVentas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle38.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClFechaRegistro,
@@ -276,28 +276,28 @@
             this.ClDescuento,
             this.ClTotalVenta,
             this.ClMedioPago});
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
-            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgVentas.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgVentas.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgVentas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgVentas.GridColor = System.Drawing.Color.CadetBlue;
             this.dtgVentas.Location = new System.Drawing.Point(0, 87);
             this.dtgVentas.Name = "dtgVentas";
             this.dtgVentas.ReadOnly = true;
             this.dtgVentas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgVentas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dtgVentas.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dtgVentas.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
@@ -310,12 +310,14 @@
             this.ClFechaRegistro.HeaderText = "Fecha ";
             this.ClFechaRegistro.Name = "ClFechaRegistro";
             this.ClFechaRegistro.ReadOnly = true;
+            this.ClFechaRegistro.Width = 120;
             // 
             // ClHoraRegistro
             // 
             this.ClHoraRegistro.HeaderText = "Hora";
             this.ClHoraRegistro.Name = "ClHoraRegistro";
             this.ClHoraRegistro.ReadOnly = true;
+            this.ClHoraRegistro.Width = 150;
             // 
             // ClUsuario
             // 

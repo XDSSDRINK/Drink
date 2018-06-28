@@ -388,6 +388,7 @@ namespace SBX
 
         private void btnCierreCaja_Click(object sender, EventArgs e)
         {
+            CIERRE_BILLETES Cbi = new CIERRE_BILLETES();
             cj.Usuario = CodigoUsuario;
             DT = cj.CargarCaja();
             if (DT.Rows.Count > 0)

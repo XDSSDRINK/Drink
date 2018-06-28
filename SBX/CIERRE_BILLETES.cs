@@ -159,6 +159,7 @@ namespace SBX
                 {
                     CM.BilletesT.Add(this.Billetes[i]);
                 }
+                CM.CodigoUsuario = this.CodigoUsuario;
                 this.Dispose();
                 this.Close();
                 CM.ShowDialog();
