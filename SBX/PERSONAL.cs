@@ -169,5 +169,10 @@ namespace SBX
         {
 
         }
+
+        private void dtgPersonal_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

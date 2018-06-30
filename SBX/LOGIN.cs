@@ -151,5 +151,10 @@ namespace SBX
         {
             Validacion();
         }
+
+        private void LOGIN_Load(object sender, EventArgs e)
+        {
+            txtUsuario.Focus();
+        }
     }
 }
