@@ -101,7 +101,7 @@
             this.dtgBaucher.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.CadetBlue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -113,7 +113,7 @@
             this.ClValor});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
@@ -158,13 +158,13 @@
             this.btnGuardar.FlatAppearance.BorderSize = 0;
             this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.SystemColors.Window;
             this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGuardar.Location = new System.Drawing.Point(197, 398);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(95, 40);
+            this.btnGuardar.Size = new System.Drawing.Size(108, 40);
             this.btnGuardar.TabIndex = 105;
             this.btnGuardar.Text = "Siguiente";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -174,10 +174,10 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(12, 367);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(36, 17);
+            this.label20.Size = new System.Drawing.Size(35, 15);
             this.label20.TabIndex = 108;
             this.label20.Text = "Base";
             // 
@@ -186,21 +186,21 @@
             this.txtValorTotalBase.BackColor = System.Drawing.SystemColors.Window;
             this.txtValorTotalBase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValorTotalBase.Enabled = false;
-            this.txtValorTotalBase.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorTotalBase.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorTotalBase.Location = new System.Drawing.Point(75, 367);
             this.txtValorTotalBase.MaxLength = 20;
             this.txtValorTotalBase.Name = "txtValorTotalBase";
-            this.txtValorTotalBase.Size = new System.Drawing.Size(349, 21);
+            this.txtValorTotalBase.Size = new System.Drawing.Size(349, 20);
             this.txtValorTotalBase.TabIndex = 107;
             this.txtValorTotalBase.Text = "0";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(16, 341);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(14, 17);
+            this.label19.Size = new System.Drawing.Size(14, 15);
             this.label19.TabIndex = 110;
             this.label19.Text = "Σ";
             // 
@@ -209,11 +209,11 @@
             this.txtTotalBaucher.BackColor = System.Drawing.SystemColors.Window;
             this.txtTotalBaucher.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotalBaucher.Enabled = false;
-            this.txtTotalBaucher.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalBaucher.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalBaucher.Location = new System.Drawing.Point(75, 340);
             this.txtTotalBaucher.MaxLength = 20;
             this.txtTotalBaucher.Name = "txtTotalBaucher";
-            this.txtTotalBaucher.Size = new System.Drawing.Size(349, 21);
+            this.txtTotalBaucher.Size = new System.Drawing.Size(349, 20);
             this.txtTotalBaucher.TabIndex = 109;
             this.txtTotalBaucher.Text = "0";
             // 

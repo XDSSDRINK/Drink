@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace SBX
 {
@@ -50,6 +51,7 @@ namespace SBX
         int Contador = 0;
         bool OK = true;
         string item = "";
+        string codigoBarras = "";
         int Usuariosreg = 0;
         CONTROLLER.Mesero oMesero = new CONTROLLER.Mesero();
 
@@ -229,7 +231,7 @@ namespace SBX
                     {
                         foreach (DataGridViewRow proexit in dtgRegistroVentas.Rows)
                         {
-                            if (proexit.Cells["ClItem"].Value.ToString() == Pro["Item"].ToString())
+                            if (proexit.Cells["ClItem"].Value.ToString() == Pro["Item"].ToString() && proexit.Cells["ClCodigoBarras"].Value.ToString() == "")
                             {
                                 NuevoProducto = false;
                                 NuevaCantidad = Convert.ToDouble(proexit.Cells["ClCantidad"].Value) + 1;
@@ -246,7 +248,7 @@ namespace SBX
                                 dtgRegistroVentas.Rows[Contador].Cells["ClNombreDoc"].Value = "Prueba";
                                 dtgRegistroVentas.Rows[Contador].Cells["ClConseDoc"].Value = "0001";
                                 dtgRegistroVentas.Rows[Contador].Cells["ClItem"].Value = rows["Item"].ToString();
-                                dtgRegistroVentas.Rows[Contador].Cells["ClCodigoBarras"].Value = rows["COD_BARRAS"].ToString();
+                                dtgRegistroVentas.Rows[Contador].Cells["ClCodigoBarras"].Value = "";
                                 dtgRegistroVentas.Rows[Contador].Cells["ClNombre"].Value = rows["Nombre"].ToString();
                                 dtgRegistroVentas.Rows[Contador].Cells["ClReferencia"].Value = rows["Referencia"].ToString();
                                 dtgRegistroVentas.Rows[Contador].Cells["ClCantidad"].Value = "1";
@@ -271,7 +273,7 @@ namespace SBX
                             dtgRegistroVentas.Rows[Contador].Cells["ClNombreDoc"].Value = "Prueba";
                             dtgRegistroVentas.Rows[Contador].Cells["ClConseDoc"].Value = "0001";
                             dtgRegistroVentas.Rows[Contador].Cells["ClItem"].Value = rows["Item"].ToString();
-                            dtgRegistroVentas.Rows[Contador].Cells["ClCodigoBarras"].Value = rows["COD_BARRAS"].ToString();
+                            dtgRegistroVentas.Rows[Contador].Cells["ClCodigoBarras"].Value = "";
                             dtgRegistroVentas.Rows[Contador].Cells["ClNombre"].Value = rows["Nombre"].ToString();
                             dtgRegistroVentas.Rows[Contador].Cells["ClReferencia"].Value = rows["Referencia"].ToString();
                             dtgRegistroVentas.Rows[Contador].Cells["ClCantidad"].Value = "1";
@@ -304,7 +306,7 @@ namespace SBX
                         {
                             foreach (DataGridViewRow proexit in dtgRegistroVentas.Rows)
                             {
-                                if (proexit.Cells["ClItem"].Value.ToString() == Pro["Item"].ToString())
+                                if (proexit.Cells["ClItem"].Value.ToString() == Pro["Item"].ToString() && proexit.Cells["ClCodigoBarras"].Value.ToString() == Pro["COD_BARRAS"].ToString())
                                 {
                                     NuevoProducto = false;
                                     NuevaCantidad = Convert.ToDouble(proexit.Cells["ClCantidad"].Value) + 1;
@@ -492,37 +494,48 @@ namespace SBX
         {
             Filas = 0;
             item = "";
-            double CodigoProducto;
+            codigoBarras = "";
+            DataRow rows;
+
             if (dtgRegistroVentas.RowCount > 0)
             {
                 Filas = dtgRegistroVentas.CurrentRow.Index;
                 item = dtgRegistroVentas.Rows[Filas].Cells["ClItem"].Value.ToString();
+                codigoBarras = dtgRegistroVentas.Rows[Filas].Cells["ClCodigoBarras"].Value.ToString();
 
-                DT = prod.CargarProducto("pd.Item", item, "Unico");
+                if (codigoBarras != "")
+                {
+                    item = codigoBarras;
+                }
+
+                //Busca productos por item
+                ventas.buscar = item;
+                DT = ventas.producto_venta();
 
                 if (DT.Rows.Count > 0)
                 {
-                    DataRow rs = DT.Rows[0];
-                    CodigoProducto = Convert.ToDouble(rs["CodigoProducto"]);
-
-                    ventas.buscar = item;
-                    DT = ventas.producto_venta();
-
-                    foreach (DataRow rows in DT.Rows)
-                    {
-                        if (rows["PRODUCTO"].ToString() == CodigoProducto.ToString())
-                        {
-                            Calculos.Costos = rows["Costo"].ToString();
-                            Calculos.Margen = rows["Margen"].ToString();
-                        }
-                    }
-
-                    Calculos.Producto = dtgRegistroVentas.Rows[Filas].Cells["ClItem"].Value.ToString();
-                    Calculos.Modulo = "Venta";
-                    Calculos.PrecioVenta = Convert.ToDouble(dtgRegistroVentas.Rows[Filas].Cells["ClValorUnidad"].Value);
-                    Calculos.MargenVentas += new CalcularMargen.EnviaMargenVenta(AplicarDescuentos);
-                    Calculos.ShowDialog();
+                    rows = DT.Rows[0];
+                    Calculos.Costos = rows["Costo"].ToString();
+                    Calculos.Margen = rows["Margen"].ToString();
                 }
+                else
+                {
+                    //Busca productos por codigo de barras
+                    ventas.buscar = codigoBarras;
+                    DT = ventas.CargarProductosCodigoBarras();
+                    if (DT.Rows.Count > 0)
+                    {
+                        rows = DT.Rows[0];
+                        Calculos.Costos = rows["Costo"].ToString();
+                        Calculos.Margen = rows["Margen"].ToString();
+                    }
+                }
+
+                Calculos.Producto = dtgRegistroVentas.Rows[Filas].Cells["ClItem"].Value.ToString();
+                Calculos.Modulo = "Venta";
+                Calculos.PrecioVenta = Convert.ToDouble(dtgRegistroVentas.Rows[Filas].Cells["ClValorUnidad"].Value);
+                Calculos.MargenVentas += new CalcularMargen.EnviaMargenVenta(AplicarDescuentos);
+                Calculos.ShowDialog();
             }
 
             CalculoValores();
@@ -532,7 +545,11 @@ namespace SBX
         {
             foreach (DataGridViewRow rows in dtgRegistroVentas.Rows)
             {
-                if (item == rows.Cells["ClItem"].Value.ToString())
+                if (item == rows.Cells["ClItem"].Value.ToString() && rows.Cells["ClCodigoBarras"].Value.ToString() == "")
+                {
+                    rows.Cells["ClDescuento"].Value = Descuento;
+                }
+                else if(item == rows.Cells["ClCodigoBarras"].Value.ToString())
                 {
                     rows.Cells["ClDescuento"].Value = Descuento;
                 }
@@ -770,7 +787,10 @@ namespace SBX
             DataRow rowsGlobal;
             Boolean continua = true;
             double NuevoConsecutivo = 0;
-
+            int ContadorErrorKardex = 0;
+            int ContadorErrorVenta = 0;
+            codigoBarras = "";
+            item = "";
             ValidacionCantidad();
             CalculoValores();
             RellenaCampo();
@@ -816,6 +836,7 @@ namespace SBX
                             ventas.CodigoUsuario = Convert.ToInt32(rows["CodigoUsuario"]);
                         }
                     }
+<<<<<<< HEAD
                     //Cliente
                     if (txtCliente.Text.Trim() != "" && txtCliente.Text != "Cliente")
                     {
@@ -876,6 +897,75 @@ namespace SBX
                         ventas.Efectivo = Convert.ToDouble(txtRecibido.Text);
 
                         OK = ventas.Registrar();
+=======
+                }
+                else
+                {
+                    ventas.CodigoCliente = 3;
+                }
+
+                DT = fact.CargarFacura();
+                foreach (DataRow fac in DT.Rows)
+                {
+                    //Verificacion en ventas
+                    DT = ventas.CargarUltimoConsecutivo();
+                    foreach (DataRow ventasrow in DT.Rows)
+                    {
+                        if (ventasrow["UltimoConsecutivo"].ToString() != "0")
+                        {
+                            NuevoConsecutivo = Convert.ToDouble(ventasrow["UltimoConsecutivo"]) + 1;
+                            ventas.ConsecutivoDocumento = NuevoConsecutivo.ToString();
+                        }
+                        else
+                        {
+                            ventas.ConsecutivoDocumento = "1";
+                        }
+                    }
+                    ventas.NombreDocumento = fac["Nombre"].ToString();
+                }
+
+                foreach (DataGridViewRow rows in dtgRegistroVentas.Rows)
+                {
+                    //Producto
+                    DT = prod.CargarProducto("pd.Item", rows.Cells["ClItem"].Value.ToString(), "Unico");
+                    rowsGlobal = DT.Rows[0];
+                    ventas.CodigoProducto = Convert.ToInt32(rowsGlobal["CodigoProducto"]);
+                    ventas.CodigoBarras = rows.Cells["ClCodigoBarras"].Value.ToString();
+                    ventas.IVA = Convert.ToDouble(rows.Cells["ClIva"].Value);
+                    ventas.Puntos = Convert.ToDouble(txtPuntos.Text);
+                    //Factura
+                    ventas.Documento = "Factura";
+
+                    ventas.Cantidad = Convert.ToDouble(rows.Cells["ClCantidad"].Value);
+                    item = rows.Cells["ClItem"].Value.ToString();
+                    codigoBarras = rows.Cells["ClCodigoBarras"].Value.ToString();
+
+                    if (codigoBarras != "")
+                    {
+                        item = codigoBarras;
+                    }
+                    //Busca productos por item
+                    ventas.buscar = item;
+                    DT = ventas.producto_venta();
+
+                    if (DT.Rows.Count > 0)
+                    {
+                        rowsGlobal = DT.Rows[0];
+                        ventas.Costo = Convert.ToDouble(rowsGlobal["Costo"]);
+                        ventas.Margen = Convert.ToDouble(rowsGlobal["Margen"]);
+                    }
+                    else
+                    {
+                        //Busca productos por codigo de barras
+                        ventas.buscar = codigoBarras;
+                        DT = ventas.CargarProductosCodigoBarras();
+                        if (DT.Rows.Count > 0)
+                        {
+                            rowsGlobal = DT.Rows[0];
+                            ventas.Costo = Convert.ToDouble(rowsGlobal["Costo"]);
+                            ventas.Margen = Convert.ToDouble(rowsGlobal["Margen"]);
+                        }
+>>>>>>> 306e46297e10b2ace8f6288c603c474a9e3f0cda
                     }
 
                     if (OK)
@@ -884,6 +974,7 @@ namespace SBX
                         kardx.Modulo = "Ventas";
                         OK = kardx.Registrar();
 
+<<<<<<< HEAD
                         if (!OK)
                         {
                             msgError.lblMensaje.Text = "Error al intentar registrar en kardex";
@@ -925,6 +1016,61 @@ namespace SBX
                         msgError.ShowDialog();
                     }
                 }
+=======
+                    OK = ventas.Registrar();
+                    if (OK)
+                    {
+                        kardx.CodigoUsuario = Usuariosreg;
+                        kardx.Modulo = "Ventas";
+                        OK = kardx.Registrar();
+                        if (!OK)
+                        {
+                            ContadorErrorKardex++;
+                            //Crear arhivo log de errores en ventas
+                            StreamWriter EscriturasKardex = File.AppendText("ErrorRegistroKardex.txt");
+                            EscriturasKardex.WriteLine("Fecha: " + DateTime.Now + ", Error al intentar registrar producto en kardex: " + rowsGlobal["Item"].ToString());
+                            EscriturasKardex.Close();
+                        }
+                    }
+                    else
+                    {
+                        ContadorErrorVenta++;
+                        //Crear arhivo log de errores en ventas
+                        StreamWriter EscriturasVentas = File.AppendText("ErrorRegistroVenta.txt");
+                        EscriturasVentas.WriteLine("Fecha: " + DateTime.Now + ", Error al intentar registrar producto en venta: " + rowsGlobal["Item"].ToString());
+                        EscriturasVentas.Close();
+                    }
+
+                    StreamWriter Finalizado = File.AppendText("ProductosRegistradosVentas.txt");
+                    Finalizado.WriteLine(" Fecha: "+DateTime.Now+", Producto: " + rowsGlobal["Item"].ToString());
+                    Finalizado.Close();
+                }
+
+                if (ContadorErrorVenta == 0 && ContadorErrorKardex == 0)
+                {
+                    msgCorrecto.lblMensaje.Text = "Venta registrada correctamente";
+                    msgCorrecto.ShowDialog();
+                    Limpiar();
+                    AgregarVenta();
+                }
+                else
+                {
+                    if (ContadorErrorVenta > 0)
+                    {
+                        msgError.lblMensaje.Text = "No fue posible registrar en ventas " + ContadorErrorVenta + " Productos \n ";
+                        if (ContadorErrorKardex > 0)
+                        {
+                            msgError.lblMensaje.Text = msgError.lblMensaje.Text + "No fue posible registrar en kardex " + ContadorErrorKardex + " Productos ";
+                        }
+                    }
+                    else if(ContadorErrorKardex > 0)
+                    {
+                        msgError.lblMensaje.Text = msgError.lblMensaje.Text + "No fue posible registrar en kardex " + ContadorErrorKardex + " Productos ";
+                    }
+
+                    msgError.ShowDialog();
+                }    
+>>>>>>> 306e46297e10b2ace8f6288c603c474a9e3f0cda
             }
 
         }

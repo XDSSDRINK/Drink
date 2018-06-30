@@ -107,5 +107,12 @@ namespace SBX.CONTROLLER
             ok = datos.EliminarConParametros(Parametros,Query);
             return ok;
         }
+
+        public DataTable ConsultarVentasParaCaja()
+        {
+            Query = "EXECUTE SP_TOTAL_VENTA_CIERRE_CAJA " + " '" + Usuario + "' ";
+            DT = datos.Consultar(Query);
+            return DT;
+        }
     }
 }

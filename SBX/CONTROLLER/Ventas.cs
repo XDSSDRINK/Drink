@@ -19,7 +19,9 @@ namespace SBX.CONTROLLER
         public string ConsecutivoDoc { get; set; }
         public string FechaIni { get; set; }
         public string FechaFin { get; set; }
-      
+        public DateTime FechaIniD { get; set; }
+        public DateTime FechaFinD { get; set; }
+
         string Query = "";
         string WHERE = "";
         SqlParameter[] Parametros;
@@ -164,7 +166,7 @@ namespace SBX.CONTROLLER
             Parametros[15] = new SqlParameter();
             Parametros[15].ParameterName = "@FechaRegistro";
             Parametros[15].SqlDbType = SqlDbType.DateTime;
-            Parametros[15].SqlValue = DateTime.Today;
+            Parametros[15].SqlValue = DateTime.Now;
 
             Parametros[16] = new SqlParameter();
             Parametros[16].ParameterName = "@HoraRegistro";

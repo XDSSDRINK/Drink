@@ -100,3 +100,7 @@ C:\Users\Ruben0793\Documents\XDSS\SBX\SBX\SBX\obj\Release\SBX.USUARIOS.resources
 C:\Users\Ruben0793\Documents\XDSS\SBX\SBX\SBX\obj\Release\SBX.VENTAS.resources
 C:\Users\Ruben0793\Documents\XDSS\SBX\SBX\SBX\obj\Release\SBX.csproj.GenerateResource.Cache
 C:\Users\Ruben0793\Documents\XDSS\SBX\SBX\SBX\obj\Release\SBX.APERTURA_CAJ.resources
+C:\Users\Ruben0793\Documents\XDSS\SBX\SBX\SBX\obj\Release\SBX.CIERRE_BAUCHER.resources
+C:\Users\Ruben0793\Documents\XDSS\SBX\SBX\SBX\obj\Release\SBX.CIERRE_BILLETES.resources
+C:\Users\Ruben0793\Documents\XDSS\SBX\SBX\SBX\obj\Release\SBX.CIERRE_MONEDAS.resources
+C:\Users\Ruben0793\Documents\XDSS\SBX\SBX\SBX\obj\Release\SBX.INFORME_CIERRE_CAJA.resources
