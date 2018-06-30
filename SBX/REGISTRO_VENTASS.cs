@@ -897,7 +897,7 @@ namespace SBX
                         ventas.Efectivo = Convert.ToDouble(txtRecibido.Text);
 
                         OK = ventas.Registrar();
-=======
+
                 }
                 else
                 {
@@ -965,7 +965,7 @@ namespace SBX
                             ventas.Costo = Convert.ToDouble(rowsGlobal["Costo"]);
                             ventas.Margen = Convert.ToDouble(rowsGlobal["Margen"]);
                         }
->>>>>>> 306e46297e10b2ace8f6288c603c474a9e3f0cda
+
                     }
 
                     if (OK)
@@ -974,7 +974,7 @@ namespace SBX
                         kardx.Modulo = "Ventas";
                         OK = kardx.Registrar();
 
-<<<<<<< HEAD
+
                         if (!OK)
                         {
                             msgError.lblMensaje.Text = "Error al intentar registrar en kardex";
@@ -1016,7 +1016,7 @@ namespace SBX
                         msgError.ShowDialog();
                     }
                 }
-=======
+
                     OK = ventas.Registrar();
                     if (OK)
                     {
@@ -1070,7 +1070,7 @@ namespace SBX
 
                     msgError.ShowDialog();
                 }    
->>>>>>> 306e46297e10b2ace8f6288c603c474a9e3f0cda
+
             }
 
         }
