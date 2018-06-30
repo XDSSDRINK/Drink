@@ -198,6 +198,23 @@ namespace SBX
                                         OK = cj.Registrar();
                                     }
                                 }
+                                else if(regis["TipoOperacion"].ToString() == "Cierre" && regis["Usuario"].ToString() == CodigoUsuario.ToString())
+                                {
+                                    cj.TipoOperacion = regis["TipoOperacion"].ToString();
+                                    cj.FechaRegistro = Convert.ToDateTime(regis["FechaRegistro"]);
+                                    cj.Billete = 100000;
+                                    //Billetes 100.000 y Monedas 1.000
+                                    cj.Billete = 100000;
+                                    cj.CantidadBilletes = Convert.ToInt32(txtCantidad100000.Text);
+                                    cj.Moneda = 1000;
+                                    cj.CantidadMonedas = Convert.ToInt32(txtCantidadM1000.Text);
+                                    cj.NumeroBaucher = 0;
+                                    cj.ValorBaucher = 0;
+                                    cj.TipoOperacion = "Apertura";
+                                    cj.Usuario = CodigoUsuario;
+                                    cj.FechaRegistro = DateTime.Now;
+                                    OK = cj.Registrar();
+                                }
                                 break;
                             case "50000":
                                 if (OK)
@@ -222,6 +239,23 @@ namespace SBX
                                             cj.FechaRegistro = DateTime.Now;
                                             OK = cj.Registrar();
                                         }
+                                    }
+                                    else if (regis["TipoOperacion"].ToString() == "Cierre" && regis["Usuario"].ToString() == CodigoUsuario.ToString())
+                                    {
+                                        cj.TipoOperacion = regis["TipoOperacion"].ToString();
+                                        cj.FechaRegistro = Convert.ToDateTime(regis["FechaRegistro"]);
+                                        cj.Billete = 50000;
+                                            //Billetes 50.000 y Monedas 500      
+                                            cj.Billete = 50000;
+                                            cj.CantidadBilletes = Convert.ToInt32(txtCantidad50000.Text);
+                                            cj.Moneda = 500;
+                                            cj.CantidadMonedas = Convert.ToInt32(txtCantidadM500.Text);
+                                            cj.NumeroBaucher = 0;
+                                            cj.ValorBaucher = 0;
+                                            cj.TipoOperacion = "Apertura";
+                                            cj.Usuario = CodigoUsuario;
+                                            cj.FechaRegistro = DateTime.Now;
+                                            OK = cj.Registrar();
                                     }
                                 }
                                 break;
@@ -249,6 +283,24 @@ namespace SBX
                                             OK = cj.Registrar();
                                         }
                                     }
+                                    else if (regis["TipoOperacion"].ToString() == "Cierre" && regis["Usuario"].ToString() == CodigoUsuario.ToString())
+                                    {
+                                        cj.TipoOperacion = regis["TipoOperacion"].ToString();
+                                        cj.FechaRegistro = Convert.ToDateTime(regis["FechaRegistro"]);
+                                        cj.Billete = 20000;
+                                       
+                                            //Billetes 20.000 y Monedas 200      
+                                            cj.Billete = 20000;
+                                            cj.CantidadBilletes = Convert.ToInt32(txtCantidad20000.Text);
+                                            cj.Moneda = 200;
+                                            cj.CantidadMonedas = Convert.ToInt32(txtCantidadM200.Text);
+                                            cj.NumeroBaucher = 0;
+                                            cj.ValorBaucher = 0;
+                                            cj.TipoOperacion = "Apertura";
+                                            cj.Usuario = CodigoUsuario;
+                                            cj.FechaRegistro = DateTime.Now;
+                                            OK = cj.Registrar();
+                                        }
                                 }
                                 break;
                             case "10000":
@@ -275,6 +327,24 @@ namespace SBX
                                             OK = cj.Registrar();
                                         }
                                     }
+                                    else if (regis["TipoOperacion"].ToString() == "Cierre" && regis["Usuario"].ToString() == CodigoUsuario.ToString())
+                                    {
+                                        cj.TipoOperacion = regis["TipoOperacion"].ToString();
+                                        cj.FechaRegistro = Convert.ToDateTime(regis["FechaRegistro"]);
+                                        cj.Billete = 10000;
+
+                                            //Billetes 10.000 y Monedas 100      
+                                            cj.Billete = 10000;
+                                            cj.CantidadBilletes = Convert.ToInt32(txtcantidad10000.Text);
+                                            cj.Moneda = 100;
+                                            cj.CantidadMonedas = Convert.ToInt32(txtCantidadM100.Text);
+                                            cj.NumeroBaucher = 0;
+                                            cj.ValorBaucher = 0;
+                                            cj.TipoOperacion = "Apertura";
+                                            cj.Usuario = CodigoUsuario;
+                                            cj.FechaRegistro = DateTime.Now;
+                                            OK = cj.Registrar();
+                                        }
                                 }
                                 break;
                             case "5000":
@@ -300,6 +370,24 @@ namespace SBX
                                             cj.FechaRegistro = DateTime.Now;
                                             OK = cj.Registrar();
                                         }
+                                    }
+                                    else if (regis["TipoOperacion"].ToString() == "Cierre" && regis["Usuario"].ToString() == CodigoUsuario.ToString())
+                                    {
+                                        cj.TipoOperacion = regis["TipoOperacion"].ToString();
+                                        cj.FechaRegistro = Convert.ToDateTime(regis["FechaRegistro"]);
+                                        cj.Billete = 5000;
+                                       
+                                            //Billetes 5.000 y Monedas 50      
+                                            cj.Billete = 5000;
+                                            cj.CantidadBilletes = Convert.ToInt32(txtCantidad5000.Text);
+                                            cj.Moneda = 50;
+                                            cj.CantidadMonedas = Convert.ToInt32(txtCantidadM50.Text);
+                                            cj.NumeroBaucher = 0;
+                                            cj.ValorBaucher = 0;
+                                            cj.TipoOperacion = "Apertura";
+                                            cj.Usuario = CodigoUsuario;
+                                            cj.FechaRegistro = DateTime.Now;
+                                            OK = cj.Registrar();
                                     }
                                 }
                                 break;
@@ -327,6 +415,24 @@ namespace SBX
                                             OK = cj.Registrar();
                                         }
                                     }
+                                    else if (regis["TipoOperacion"].ToString() == "Cierre" && regis["Usuario"].ToString() == CodigoUsuario.ToString())
+                                    {
+                                        cj.TipoOperacion = regis["TipoOperacion"].ToString();
+                                        cj.FechaRegistro = Convert.ToDateTime(regis["FechaRegistro"]);
+                                        cj.Billete = 2000;
+                                     
+                                            //Billetes 2.000 y Monedas 20      
+                                            cj.Billete = 2000;
+                                            cj.CantidadBilletes = Convert.ToInt32(txtcantidad2000.Text);
+                                            cj.Moneda = 20;
+                                            cj.CantidadMonedas = Convert.ToInt32(txtCantidadM20.Text);
+                                            cj.NumeroBaucher = 0;
+                                            cj.ValorBaucher = 0;
+                                            cj.TipoOperacion = "Apertura";
+                                            cj.Usuario = CodigoUsuario;
+                                            cj.FechaRegistro = DateTime.Now;
+                                            OK = cj.Registrar();
+                                    }
                                 }
                                 break;
                             case "1000":
@@ -352,6 +458,24 @@ namespace SBX
                                             cj.FechaRegistro = DateTime.Now;
                                             OK = cj.Registrar();
                                         }
+                                    }
+                                    else if (regis["TipoOperacion"].ToString() == "Cierre" && regis["Usuario"].ToString() == CodigoUsuario.ToString())
+                                    {
+                                        cj.TipoOperacion = regis["TipoOperacion"].ToString();
+                                        cj.FechaRegistro = Convert.ToDateTime(regis["FechaRegistro"]);
+                                        cj.Billete = 1000;
+                                       
+                                            //Billetes 1.000 y Monedas 10      
+                                            cj.Billete = 1000;
+                                            cj.CantidadBilletes = Convert.ToInt32(txtcantidad1000.Text);
+                                            cj.Moneda = 10;
+                                            cj.CantidadMonedas = Convert.ToInt32(txtCantidadM10.Text);
+                                            cj.NumeroBaucher = 0;
+                                            cj.ValorBaucher = 0;
+                                            cj.TipoOperacion = "Apertura";
+                                            cj.Usuario = CodigoUsuario;
+                                            cj.FechaRegistro = DateTime.Now;
+                                            OK = cj.Registrar();
                                     }
                                 }
                                 break;

@@ -184,7 +184,7 @@ namespace SBX.CONTROLLER
 
             Parametros[14] = new SqlParameter();
             Parametros[14].ParameterName = "@FechaRegistro";
-            Parametros[14].SqlDbType = SqlDbType.Date;
+            Parametros[14].SqlDbType = SqlDbType.DateTime;
             Parametros[14].SqlValue = FechaRegistro;
 
             Parametros[15] = new SqlParameter();

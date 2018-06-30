@@ -15,6 +15,8 @@ namespace SBX
     {
         CONTROLLER.General gnl = new CONTROLLER.General();
 
+        public int CodigoUsuario { get; set; }
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -211,7 +213,7 @@ namespace SBX
                 {
                     CB.MonedasT.Add(this.Monedas[i]);
                 }
-
+                CB.CodigoUsuario = this.CodigoUsuario;
                 this.Dispose();
                 this.Close();
                 CB.ShowDialog();

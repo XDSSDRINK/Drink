@@ -21,6 +21,8 @@ namespace SBX
         public List<double> BilletesT = new List<double>();
         private List<double> Baucher = new List<double>();
 
+        public int CodigoUsuario { get; set; }
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -183,6 +185,8 @@ namespace SBX
             txtValorTotalBase.Text = Base.ToString("N");
         }
 
+
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             ValidacionCantidad();
@@ -190,6 +194,33 @@ namespace SBX
             if (Validado == 0)
             {
                 CalcularBase();
+
+                INFORME_CIERRE_CAJA InfoC = new INFORME_CIERRE_CAJA();
+                //Billetes
+                for (int i = 0; i < this.BilletesT.Count; i++)
+                {
+                    InfoC.Billetes.Add(this.BilletesT[i]);
+                }
+                //Monedas
+                for (int i = 0; i < this.MonedasT.Count; i++)
+                {
+                    InfoC.Monedas.Add(this.MonedasT[i]);
+                }
+                //Baucher
+                foreach (DataGridViewRow rows in dtgBaucher.Rows)
+                {
+                    Baucher.Add(Convert.ToDouble(rows.Cells["ClNumeroBaucher"].Value));
+                    Baucher.Add(Convert.ToDouble(rows.Cells["ClValor"].Value));
+                }
+
+                for (int i = 0; i < this.Baucher.Count; i++)
+                {
+                    InfoC.Baucher.Add(this.Baucher[i]);
+                }
+                InfoC.CodigoUsuario = this.CodigoUsuario;
+                this.Dispose();
+                this.Close();
+                InfoC.ShowDialog();
             }
         }
 

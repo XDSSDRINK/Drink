@@ -149,6 +149,8 @@ namespace SBX
             ventas.ConsecutivoDoc = txtConsecutivoDoc.Text;
             ventas.FechaIni = dtpkFechaIni.Text;
             ventas.FechaFin = dtpkFechaFinal.Text;
+            ventas.FechaIniD = dtpkFechaIni.Value;
+            ventas.FechaFinD = dtpkFechaFinal.Value;
 
             DT = ventas.CargarVentas();
             dtgVentas.Rows.Clear();
