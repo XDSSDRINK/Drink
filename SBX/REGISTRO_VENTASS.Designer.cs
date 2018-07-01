@@ -478,8 +478,8 @@
             this.txtRecibido.Name = "txtRecibido";
             this.txtRecibido.Size = new System.Drawing.Size(195, 20);
             this.txtRecibido.TabIndex = 78;
-            this.txtRecibido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRecibido_KeyPress);
-            this.txtRecibido.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtRecibido_KeyUp);
+            //this.txtRecibido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRecibido_KeyPress);
+            //this.txtRecibido.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtRecibido_KeyUp);
             // 
             // label5
             // 

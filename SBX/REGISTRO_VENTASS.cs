@@ -836,7 +836,7 @@ namespace SBX
                             ventas.CodigoUsuario = Convert.ToInt32(rows["CodigoUsuario"]);
                         }
                     }
-<<<<<<< HEAD
+
                     //Cliente
                     if (txtCliente.Text.Trim() != "" && txtCliente.Text != "Cliente")
                     {
@@ -898,6 +898,7 @@ namespace SBX
 
                         OK = ventas.Registrar();
 
+                    }
                 }
                 else
                 {
@@ -1028,7 +1029,7 @@ namespace SBX
                             ContadorErrorKardex++;
                             //Crear arhivo log de errores en ventas
                             StreamWriter EscriturasKardex = File.AppendText("ErrorRegistroKardex.txt");
-                            EscriturasKardex.WriteLine("Fecha: " + DateTime.Now + ", Error al intentar registrar producto en kardex: " + rowsGlobal["Item"].ToString());
+                            EscriturasKardex.WriteLine("Fecha: " + DateTime.Now + ", Error al intentar registrar producto en kardex: ");
                             EscriturasKardex.Close();
                         }
                     }
@@ -1037,12 +1038,12 @@ namespace SBX
                         ContadorErrorVenta++;
                         //Crear arhivo log de errores en ventas
                         StreamWriter EscriturasVentas = File.AppendText("ErrorRegistroVenta.txt");
-                        EscriturasVentas.WriteLine("Fecha: " + DateTime.Now + ", Error al intentar registrar producto en venta: " + rowsGlobal["Item"].ToString());
+                        EscriturasVentas.WriteLine("Fecha: " + DateTime.Now + ", Error al intentar registrar producto en venta: ");
                         EscriturasVentas.Close();
                     }
 
                     StreamWriter Finalizado = File.AppendText("ProductosRegistradosVentas.txt");
-                    Finalizado.WriteLine(" Fecha: "+DateTime.Now+", Producto: " + rowsGlobal["Item"].ToString());
+                    Finalizado.WriteLine(" Fecha: "+DateTime.Now+", Producto: " );
                     Finalizado.Close();
                 }
 
@@ -1072,8 +1073,6 @@ namespace SBX
                 }    
 
             }
-
-        }
 
         private void txtRecibido_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1204,3 +1203,4 @@ namespace SBX
         }
     }
 }
+
